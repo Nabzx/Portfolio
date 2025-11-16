@@ -21,7 +21,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>("dark");
   const [mounted, setMounted] = useState(false);
 
-  // Load saved theme on mount
   useEffect(() => {
     const saved = localStorage.getItem("theme") as Theme | null;
 
@@ -29,28 +28,32 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       setTheme(saved);
       document.documentElement.classList.toggle("dark", saved === "dark");
     } else {
-      const systemPrefersDark = window.matchMedia(
+      const prefersDark = window.matchMedia(
         "(prefers-color-scheme: dark)"
       ).matches;
-      const initial = systemPrefersDark ? "dark" : "light";
-      setTheme(initial);
-      document.documentElement.classList.toggle("dark", initial === "dark");
+
+      const initialTheme = prefersDark ? "dark" : "light";
+      setTheme(initialTheme);
+      document.documentElement.classList.toggle(
+        "dark",
+        initialTheme === "dark"
+      );
     }
 
     setMounted(true);
   }, []);
 
-  // Handle changes whenever theme updates
   useEffect(() => {
     if (!mounted) return;
     document.documentElement.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
   }, [theme, mounted]);
 
-  const toggleTheme = () =>
+  const toggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
 
-  // Prevent hydration mismatches
+  // Prevent hydration mismatch
   if (!mounted) {
     return (
       <div style={{ visibility: "hidden", position: "absolute", inset: 0 }}>
@@ -67,13 +70,14 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 }
 
 export function useTheme() {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    // Return fallback to avoid crashing before provider hydration
+  const ctx = useContext(ThemeContext);
+
+  if (!ctx) {
     return {
       theme: "dark" as Theme,
       toggleTheme: () => {},
     };
   }
-  return context;
+
+  return ctx;
 }

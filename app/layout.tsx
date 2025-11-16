@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+
 import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
@@ -16,31 +17,29 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Nabil Shah | AI Engineer & Systems Builder",
+  title: "Nabil Shah | AI Engineer and Systems Builder",
   description:
-    "AI Engineer specializing in Systems, ML Engineering, Multi-Agent RL, and Distributed Pipelines.",
+    "AI Engineer specialising in systems, ML engineering, multi-agent RL, and distributed pipelines.",
   keywords: [
     "AI Engineer",
     "ML Engineer",
-    "Systems Engineering",
+    "Software Engineer",
     "Distributed Systems",
     "Multi-Agent RL",
     "Nabil Shah",
   ],
-  metadataBase: new URL("https://yourdomain.com"),
   openGraph: {
     type: "website",
-    title: "Nabil Shah | AI Engineer & Systems Builder",
+    title: "Nabil Shah | AI Engineer and Systems Builder",
     description:
-      "Building scalable AI systems, distributed pipelines, and next-gen ML infrastructure.",
+      "Building scalable AI systems, distributed pipelines, and next generation ML infrastructure.",
     url: "https://yourdomain.com",
-    siteName: "Nabil Shah",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nabil Shah | AI Engineer & Systems Builder",
+    title: "Nabil Shah | AI Engineer and Systems Builder",
     description:
-      "ML Engineer & Systems Builder. Creating scalable and intelligent systems.",
+      "ML Engineer and Systems Builder creating scalable and intelligent systems.",
   },
 };
 
@@ -52,29 +51,19 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} font-sans antialiased bg-background text-foreground`}
+        className={`${inter.variable} font-sans bg-background text-foreground antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={true}
-          disableTransitionOnChange
-        >
-          {/* Animated Background */}
+        {/* Custom Theme Provider (client) */}
+        <ThemeProvider>
           <BackgroundParticles />
-
-          {/* Sidebar Navigation */}
           <Sidebar />
 
-          {/* Theme Toggle */}
           <div className="fixed top-6 right-6 z-[60]">
             <ThemeToggle />
           </div>
 
-          {/* Command Palette */}
           <CommandPalette />
 
-          {/* Main Content */}
           <main className="relative z-20 min-h-screen w-full">
             {children}
           </main>
