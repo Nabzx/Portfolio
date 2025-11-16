@@ -1,11 +1,11 @@
 # Nabil Shah - Portfolio Website
 
-A modern, animated portfolio website built with Next.js 14, React, Framer Motion, and TailwindCSS. Features a unique, colorful design with smooth animations, glassmorphism effects, and a fully responsive layout.
+A modern, animated portfolio website built with Next.js 14, React, Framer Motion and TailwindCSS. Features a unique, colorful design with smooth animations, glassmorphism effects and a fully responsive layout.
 
 ## Features
 
 - **Modern Tech Stack**: Next.js 14 with App Router, TypeScript, TailwindCSS
-- **Smooth Animations**: Framer Motion for section transitions, hover effects, and timeline animations
+- **Smooth Animations**: Framer Motion for section transitions, hover effects and timeline animations
 - **Dark/Light Mode**: Theme toggle with persistent preference
 - **Command Palette**: Press `CMD/CTRL + K` to quickly navigate
 - **Smooth Scrolling**: Section-based navigation with scroll snapping
@@ -42,7 +42,7 @@ npm run build
 
 This will generate a static export in the `out` directory, ready for deployment to GitHub Pages or any static hosting service.
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── app/
@@ -68,7 +68,7 @@ This will generate a static export in the `out` directory, ready for deployment 
 └── public/                 # Static assets
 ```
 
-## Customization
+## Customisation
 
 ### Update Personal Information
 
@@ -91,7 +91,7 @@ The color scheme uses a purple-pink-blue gradient theme. Modify colors in:
 - `tailwind.config.ts` - Theme colors
 - `app/globals.css` - CSS variables
 
-## 🚢 Deployment
+## Deployment
 
 ### GitHub Pages
 
