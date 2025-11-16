@@ -11,7 +11,7 @@ A modern, animated portfolio website built with Next.js 14, React, Framer Motion
 - **Smooth Scrolling**: Section-based navigation with scroll snapping
 - **Background Effects**: Animated particle system with connecting lines
 - **Responsive Design**: Fully optimized for all screen sizes
-- **SEO Optimized**: Complete metadata and Open Graph tags
+- **SEO Optimised**: Complete metadata and Open Graph tags
 - **Easter Egg**: Hidden `/chess` page
 
 ## Installation
