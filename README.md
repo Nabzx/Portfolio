@@ -2,7 +2,7 @@
 
 A modern, animated portfolio website built with Next.js 14, React, Framer Motion, and TailwindCSS. Features a unique, colorful design with smooth animations, glassmorphism effects, and a fully responsive layout.
 
-## 🚀 Features
+## Features
 
 - **Modern Tech Stack**: Next.js 14 with App Router, TypeScript, TailwindCSS
 - **Smooth Animations**: Framer Motion for section transitions, hover effects, and timeline animations
@@ -14,7 +14,7 @@ A modern, animated portfolio website built with Next.js 14, React, Framer Motion
 - **SEO Optimized**: Complete metadata and Open Graph tags
 - **Easter Egg**: Hidden `/chess` page
 
-## 📦 Installation
+## Installation
 
 1. Clone the repository:
 ```bash
@@ -34,7 +34,7 @@ npm run dev
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## 🏗️ Build for Production
+## Build for Production
 
 ```bash
 npm run build
@@ -68,7 +68,7 @@ This will generate a static export in the `out` directory, ready for deployment 
 └── public/                 # Static assets
 ```
 
-## 🎨 Customization
+## Customization
 
 ### Update Personal Information
 
@@ -113,7 +113,7 @@ npm run build
 
 Simply connect your GitHub repository to Vercel for automatic deployments.
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **Next.js 14** - React framework with App Router
 - **TypeScript** - Type safety
@@ -122,11 +122,11 @@ Simply connect your GitHub repository to Vercel for automatic deployments.
 - **cmdk** - Command palette component
 - **lucide-react** - Icon library
 
-## 📝 License
+## License
 
 This project is open source and available under the MIT License.
 
-## 👤 Author
+## Author
 
 **Nabil Shah**
 - GitHub: [@nabilshah](https://github.com/nabilshah)
