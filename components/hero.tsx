@@ -72,7 +72,7 @@ export function Hero() {
           variants={itemVariants}
           className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 text-foreground font-display"
         >
-          Nabil Shah
+          Nabil Shah in the making...
         </motion.h1>
 
         {/* Subtitle */}
@@ -80,7 +80,7 @@ export function Hero() {
           variants={itemVariants}
           className="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 mb-8 font-medium"
         >
-          Software Engineer @ Minexx • AI Systems • Distributed Pipelines • Multi-Agent RL
+          Software Engineer @ Minexx • Artificial Intelligence • President of Founders Society
         </motion.p>
 
         {/* Paragraph */}
@@ -89,11 +89,12 @@ export function Hero() {
           className="max-w-2xl mx-auto text-slate-800 dark:text-slate-200 mb-12 space-y-4"
         >
           <p className="text-lg leading-relaxed">
-            I'm a Computer Science student with a First Class prediction, currently 
+            I'm a final year Computer Science student with a First Class prediction, currently 
             interning as a Software Engineer at Minexx. I specialise in building scalable 
             systems, AI pipelines, and multi-agent reinforcement learning. Outside of work, 
-            I enjoy MMA, playing the piano, chess, competitive debating, and indulging in 
-            all things Star Wars.
+            I enjoy MMA, playing the piano, chess, competitive debating and coding! 
+            I also love to travel, explore new places and constantly build on myself.
+            Self Improvement is my motto and I'm always looking for new challenges and opportunities to grow.
           </p>
           <p className="text-lg leading-relaxed">
             I'm actively working towards postgraduate study at Oxford and aiming for a 
