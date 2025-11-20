@@ -80,7 +80,7 @@ export function Hero() {
           variants={itemVariants}
           className="text-xl sm:text-2xl text-slate-700 dark:text-slate-300 mb-8 font-medium"
         >
-          Software Engineer @ Minexx • Artificial Intelligence • President of Founders Society
+          Software Engineer @ Minexx • Artificial Intelligence • President of Founders
         </motion.p>
 
         {/* Paragraph */}
@@ -91,8 +91,9 @@ export function Hero() {
           <p className="text-lg leading-relaxed">
             I'm a final year Computer Science student with a First Class prediction, currently 
             interning as a Software Engineer at Minexx. I specialise in building scalable 
-            systems, AI pipelines, and multi-agent reinforcement learning. Outside of work, 
-            I enjoy MMA, playing the piano, chess, competitive debating and coding! 
+            systems, AI pipelines, and multi-agent reinforcement learning.
+            
+            Outside of work, I enjoy MMA, playing the piano, chess, competitive debating and coding! 
             I also love to travel, explore new places and constantly build on myself.
             Self Improvement is my motto and I'm always looking for new challenges and opportunities to grow.
           </p>
