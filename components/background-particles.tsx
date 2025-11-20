@@ -8,6 +8,8 @@ export function BackgroundParticles() {
   const { theme } = useTheme();
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -90,15 +92,15 @@ export function BackgroundParticles() {
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < 120) {
-            const opacity = (1 - distance / 120) * 0.3;
+            const opacity = (1 - distance / 120) * 0.2;
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(other.x, other.y);
             
             if (theme === "dark") {
-              ctx.strokeStyle = `rgba(34, 197, 94, ${opacity})`; // Green for dark
+              ctx.strokeStyle = `rgba(14, 165, 233, ${opacity})`; // Sky blue
             } else {
-              ctx.strokeStyle = `rgba(139, 92, 246, ${opacity})`; // Purple for light
+              ctx.strokeStyle = `rgba(139, 92, 246, ${opacity})`; // Purple
             }
             
             ctx.lineWidth = 0.5;
@@ -119,10 +121,10 @@ export function BackgroundParticles() {
         );
 
         if (theme === "dark") {
-          gradient.addColorStop(0, "rgba(34, 197, 94, 0.6)");
-          gradient.addColorStop(1, "rgba(34, 197, 94, 0)");
+          gradient.addColorStop(0, "rgba(14, 165, 233, 0.4)");
+          gradient.addColorStop(1, "rgba(14, 165, 233, 0)");
         } else {
-          gradient.addColorStop(0, "rgba(139, 92, 246, 0.4)");
+          gradient.addColorStop(0, "rgba(139, 92, 246, 0.3)");
           gradient.addColorStop(1, "rgba(139, 92, 246, 0)");
         }
 

@@ -57,8 +57,8 @@ export function Sidebar() {
               className={cn(
                 "relative w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300 overflow-hidden font-display",
                 isActive
-                  ? "text-white"
-                  : "text-gray-600 dark:text-gray-400 hover:bg-white/10"
+                  ? "bg-gradient-to-br from-sky-500 to-emerald-400 text-slate-900"
+                  : "text-slate-200 hover:bg-white/5"
               )}
               whileHover={{ 
                 scale: 1.1,
@@ -73,17 +73,13 @@ export function Sidebar() {
               {isActive && (
                 <motion.div
                   layoutId="sidebarActiveBg"
-                  className={`absolute inset-0 rounded-full ${
-                    theme === "dark"
-                      ? "bg-gradient-to-br from-green-500 to-teal-500"
-                      : "bg-gradient-to-br from-pink-500 to-blue-500"
-                  }`}
+                  className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-500 to-emerald-400"
                   transition={{ type: "spring", stiffness: 500, damping: 30 }}
                 />
               )}
 
               {/* Number Label */}
-              <span className="relative z-10 text-sm font-bold">
+              <span className="relative z-10 text-sm font-semibold">
                 {index + 1}
               </span>
             </motion.button>

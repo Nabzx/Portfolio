@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Suspense } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { TECH_STACK } from "@/lib/constants";
@@ -35,8 +35,8 @@ function TechRing() {
           >
             <boxGeometry args={[0.3, 0.3, 0.3]} />
             <meshStandardMaterial
-              color={theme === "dark" ? "#22c55e" : "#8b5cf6"}
-              emissive={theme === "dark" ? "#10b981" : "#a855f7"}
+              color={theme === "dark" ? "#0ea5e9" : "#8b5cf6"}
+              emissive={theme === "dark" ? "#22c55e" : "#a855f7"}
               emissiveIntensity={0.5}
             />
           </mesh>
@@ -47,9 +47,14 @@ function TechRing() {
 }
 
 function TechScene() {
-  // Only render on client side
-  if (typeof window === "undefined") {
-    return <div className="h-96 w-full" />;
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted || typeof window === "undefined") {
+    return <div className="h-96 w-full bg-slate-900/50 rounded-lg" />;
   }
 
   return (
@@ -87,7 +92,7 @@ export function TechStack() {
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 font-display">
             <span className="gradient-text">Tech Stack</span>
           </h2>
-          <p className="text-slate-600 dark:text-slate-400 text-lg">
+          <p className="text-slate-200 text-lg">
             Technologies I work with
           </p>
         </motion.div>
@@ -125,16 +130,16 @@ export function TechStack() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: categoryIndex * 0.1 }}
-                  className="glass rounded-2xl p-6"
+                  className="glass rounded-2xl p-6 bg-slate-900/80"
                 >
-                  <h3 className="text-xl font-bold mb-4 text-foreground font-display">
+                  <h3 className="text-xl font-bold mb-4 text-slate-400 font-display">
                     {categoryLabels[category]}
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {items.map((item) => (
                       <span
                         key={item.name}
-                        className="px-4 py-2 rounded-full text-sm bg-gradient-to-r from-purple-500/10 to-pink-500/10 dark:from-green-500/10 dark:to-teal-500/10 text-foreground border border-purple-500/20 dark:border-green-500/20 hover:scale-105 transition-transform"
+                        className="px-4 py-2 rounded-full text-sm bg-sky-500/10 text-slate-100 border border-sky-500/20 hover:scale-105 transition-transform"
                       >
                         {item.name}
                       </span>

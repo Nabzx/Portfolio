@@ -24,7 +24,7 @@ export function Achievements() {
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 font-display">
             <span className="gradient-text">Achievements</span>
           </h2>
-          <p className="text-slate-600 dark:text-slate-400 text-lg">
+          <p className="text-slate-200 text-lg">
             Highlights from my journey
           </p>
         </motion.div>
@@ -44,16 +44,16 @@ export function Achievements() {
                 className={cn(
                   "rounded-2xl p-[1px]",
                   theme === "dark"
-                    ? "bg-gradient-to-br from-green-500 to-teal-500"
+                    ? "bg-gradient-to-br from-sky-500/50 to-emerald-400/50"
                     : "bg-gradient-to-br from-pink-500 to-blue-500"
                 )}
               >
-                <div className="glass rounded-2xl p-6 text-center hover:bg-white/5 dark:hover:bg-black/5 transition-all duration-300">
+                <div className="glass rounded-2xl p-6 text-center bg-slate-900/80 hover:bg-slate-900/90 transition-all duration-300">
                   <div className="text-5xl mb-4">{achievement.icon}</div>
-                  <h3 className="text-xl font-bold mb-2 text-foreground font-display">
+                  <h3 className="text-xl font-bold mb-2 text-slate-50 font-display">
                     {achievement.title}
                   </h3>
-                  <p className="text-slate-600 dark:text-slate-400 text-sm">
+                  <p className="text-slate-200 text-sm">
                     {achievement.description}
                   </p>
                 </div>

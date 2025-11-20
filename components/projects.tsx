@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PROJECTS, PROJECT_CATEGORIES } from "@/lib/constants";
-import { Github, ExternalLink } from "lucide-react";
+import { Github } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "./theme-provider";
 
@@ -32,7 +32,7 @@ export function Projects() {
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 font-display">
             <span className="gradient-text">Projects</span>
           </h2>
-          <p className="text-slate-600 dark:text-slate-400 text-lg mb-8">
+          <p className="text-slate-200 text-lg mb-8">
             Building scalable systems and AI solutions
           </p>
 
@@ -47,9 +47,9 @@ export function Projects() {
                   "px-6 py-2 rounded-full text-sm font-medium transition-all",
                   activeFilter === category
                     ? theme === "dark"
-                      ? "bg-gradient-to-r from-green-500 to-teal-500 text-white"
+                      ? "bg-gradient-to-r from-sky-500 to-emerald-400 text-slate-900"
                       : "bg-gradient-to-r from-pink-500 to-blue-500 text-white"
-                    : "glass text-slate-700 dark:text-slate-300 hover:bg-white/20"
+                    : "glass text-slate-200 hover:bg-white/10"
                 )}
               >
                 {category}
@@ -65,7 +65,7 @@ export function Projects() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[1fr]"
           >
             {filteredProjects.map((project, index) => (
               <motion.div
@@ -75,20 +75,20 @@ export function Projects() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -8 }}
-                className="group"
+                className="h-full"
               >
                 {/* Gradient border wrapper */}
                 <div
                   className={cn(
-                    "rounded-2xl p-[1px]",
+                    "rounded-2xl p-[1px] h-full",
                     theme === "dark"
-                      ? "bg-gradient-to-br from-green-500 to-teal-500"
+                      ? "bg-gradient-to-br from-sky-500/50 to-emerald-400/50"
                       : "bg-gradient-to-br from-pink-500 to-blue-500"
                   )}
                 >
-                  <div className="glass rounded-2xl p-6 h-full flex flex-col hover:bg-white/5 dark:hover:bg-black/5 transition-all duration-300">
+                  <div className="glass h-full flex flex-col rounded-2xl p-6 bg-slate-900/80 border border-emerald-400/30 hover:border-sky-400/60 transition-all duration-300 shadow-lg shadow-emerald-500/10">
                     <div className="flex items-start justify-between mb-4">
-                      <h3 className="text-xl font-bold text-foreground group-hover:text-purple-500 dark:group-hover:text-green-400 transition-colors font-display">
+                      <h3 className="text-xl font-bold text-slate-50 group-hover:text-sky-400 transition-colors font-display">
                         {project.title}
                       </h3>
                       {project.github && (
@@ -96,14 +96,14 @@ export function Projects() {
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-slate-500 hover:text-purple-500 dark:hover:text-green-400 transition-colors"
+                          className="text-slate-400 hover:text-sky-400 transition-colors"
                         >
                           <Github className="w-5 h-5" />
                         </a>
                       )}
                     </div>
 
-                    <p className="text-slate-600 dark:text-slate-400 mb-4 flex-1 leading-relaxed">
+                    <p className="text-sm text-slate-200 mb-4 flex-1 leading-relaxed">
                       {project.description}
                     </p>
 
@@ -111,9 +111,9 @@ export function Projects() {
                       {project.highlights.map((highlight, i) => (
                         <div
                           key={i}
-                          className="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"
+                          className="text-sm text-slate-300 flex items-start gap-2"
                         >
-                          <span className="text-purple-500 dark:text-green-400 mt-1">▸</span>
+                          <span className="text-sky-400 mt-1">▸</span>
                           <span>{highlight}</span>
                         </div>
                       ))}
@@ -123,7 +123,7 @@ export function Projects() {
                       {project.tech.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 text-xs rounded-full bg-purple-500/10 dark:bg-green-500/10 text-purple-600 dark:text-green-400 border border-purple-500/20 dark:border-green-500/20"
+                          className="px-3 py-1 text-xs rounded-full bg-sky-500/10 text-sky-300 border border-sky-500/20"
                         >
                           {tech}
                         </span>

@@ -28,16 +28,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       setTheme(saved);
       document.documentElement.classList.toggle("dark", saved === "dark");
     } else {
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-
-      const initialTheme = prefersDark ? "dark" : "light";
+      // Default to dark if no preference
+      const initialTheme = "dark";
       setTheme(initialTheme);
-      document.documentElement.classList.toggle(
-        "dark",
-        initialTheme === "dark"
-      );
+      document.documentElement.classList.toggle("dark", true);
     }
 
     setMounted(true);
