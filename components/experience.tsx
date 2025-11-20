@@ -18,10 +18,10 @@ export function Experience() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 gradient-text">
-            Experience
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 font-display">
+            <span className="gradient-text">Experience</span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-lg">
+          <p className="text-slate-600 dark:text-slate-400 text-lg">
             Building production systems and AI platforms
           </p>
         </motion.div>
@@ -50,7 +50,7 @@ export function Experience() {
                     <p className="text-xl text-purple-400 font-semibold mb-2">
                       {exp.company}
                     </p>
-                    <p className="text-gray-500 dark:text-gray-400 text-sm mb-4">
+                    <p className="text-slate-500 dark:text-slate-400 text-sm mb-4">
                       {exp.period}
                     </p>
                   </div>
@@ -64,7 +64,7 @@ export function Experience() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.2 + i * 0.1 }}
-                      className="flex items-start gap-3 text-gray-700 dark:text-gray-300"
+                      className="flex items-start gap-3 text-slate-700 dark:text-slate-300"
                     >
                       <span className="text-purple-500 mt-2">▹</span>
                       <span className="leading-relaxed">{item}</span>

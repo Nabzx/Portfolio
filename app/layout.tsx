@@ -8,12 +8,23 @@ import { BackgroundParticles } from "@/components/background-particles";
 import { Sidebar } from "@/components/sidebar";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { CommandPalette } from "@/components/command-palette";
+import { CustomCursor } from "@/components/custom-cursor";
+import { EasterEggs } from "@/components/easter-eggs";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
   preload: true,
+});
+
+// Satoshi font - using system font fallback for now
+// User can add Satoshi font files to public/fonts/ if needed
+const satoshi = Inter({
+  subsets: ["latin"],
+  variable: "--font-satoshi",
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -51,10 +62,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} font-sans bg-background text-foreground antialiased`}
+        className={`${inter.variable} ${satoshi.variable} font-sans bg-background text-foreground antialiased`}
       >
         {/* Custom Theme Provider (client) */}
         <ThemeProvider>
+          <CustomCursor />
+          <EasterEggs />
           <BackgroundParticles />
           <Sidebar />
 

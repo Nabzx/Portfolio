@@ -2,8 +2,12 @@
 
 import { motion } from "framer-motion";
 import { ACHIEVEMENTS } from "@/lib/constants";
+import { useTheme } from "./theme-provider";
+import { cn } from "@/lib/utils";
 
 export function Achievements() {
+  const { theme } = useTheme();
+
   return (
     <section
       id="achievements"
@@ -17,10 +21,10 @@ export function Achievements() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 gradient-text">
-            Achievements
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 font-display">
+            <span className="gradient-text">Achievements</span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-lg">
+          <p className="text-slate-600 dark:text-slate-400 text-lg">
             Highlights from my journey
           </p>
         </motion.div>
@@ -29,20 +33,31 @@ export function Achievements() {
           {ACHIEVEMENTS.map((achievement, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className="glass rounded-2xl p-6 text-center hover:border-purple-500/50 transition-all duration-300"
+              whileHover={{ scale: 1.05, y: -5, rotate: 2 }}
+              className="group"
             >
-              <div className="text-5xl mb-4">{achievement.icon}</div>
-              <h3 className="text-xl font-bold mb-2 text-foreground">
-                {achievement.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
-                {achievement.description}
-              </p>
+              <div
+                className={cn(
+                  "rounded-2xl p-[1px]",
+                  theme === "dark"
+                    ? "bg-gradient-to-br from-green-500 to-teal-500"
+                    : "bg-gradient-to-br from-pink-500 to-blue-500"
+                )}
+              >
+                <div className="glass rounded-2xl p-6 text-center hover:bg-white/5 dark:hover:bg-black/5 transition-all duration-300">
+                  <div className="text-5xl mb-4">{achievement.icon}</div>
+                  <h3 className="text-xl font-bold mb-2 text-foreground font-display">
+                    {achievement.title}
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm">
+                    {achievement.description}
+                  </p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -50,4 +65,3 @@ export function Achievements() {
     </section>
   );
 }
-

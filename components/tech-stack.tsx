@@ -1,14 +1,74 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 import { TECH_STACK } from "@/lib/constants";
+import { useTheme } from "./theme-provider";
+import { useMemo } from "react";
 
-const categoryLabels = {
-  languages: "Languages",
-  ml: "ML/AI",
-  cloud: "Cloud & Data",
-  systems: "Systems & Tools",
-};
+function TechRing() {
+  const { theme } = useTheme();
+  const allTech = useMemo(() => {
+    return [
+      ...TECH_STACK.languages.map((t) => t.name),
+      ...TECH_STACK.ml.map((t) => t.name),
+      ...TECH_STACK.cloud.map((t) => t.name),
+      ...TECH_STACK.systems.map((t) => t.name),
+    ];
+  }, []);
+
+  return (
+    <group rotation={[0, 0, 0]}>
+      {allTech.map((tech, i) => {
+        const angle = (i / allTech.length) * Math.PI * 2;
+        const radius = 3;
+        const x = Math.cos(angle) * radius;
+        const z = Math.sin(angle) * radius;
+
+        return (
+          <mesh
+            key={tech}
+            position={[x, 0, z]}
+            rotation={[0, -angle, 0]}
+          >
+            <boxGeometry args={[0.3, 0.3, 0.3]} />
+            <meshStandardMaterial
+              color={theme === "dark" ? "#22c55e" : "#8b5cf6"}
+              emissive={theme === "dark" ? "#10b981" : "#a855f7"}
+              emissiveIntensity={0.5}
+            />
+          </mesh>
+        );
+      })}
+    </group>
+  );
+}
+
+function TechScene() {
+  // Only render on client side
+  if (typeof window === "undefined") {
+    return <div className="h-96 w-full" />;
+  }
+
+  return (
+    <Canvas camera={{ position: [0, 0, 8] }}>
+      <Suspense fallback={null}>
+        <ambientLight intensity={0.5} />
+        <pointLight position={[10, 10, 10]} />
+        <pointLight position={[-10, -10, -10]} intensity={0.3} />
+        <TechRing />
+        <OrbitControls
+          enableZoom={false}
+          enablePan={false}
+          autoRotate
+          autoRotateSpeed={1}
+        />
+      </Suspense>
+    </Canvas>
+  );
+}
 
 export function TechStack() {
   return (
@@ -24,65 +84,68 @@ export function TechStack() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 gradient-text">
-            Tech Stack
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 font-display">
+            <span className="gradient-text">Tech Stack</span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 text-lg">
+          <p className="text-slate-600 dark:text-slate-400 text-lg">
             Technologies I work with
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {Object.entries(TECH_STACK).map(([category, items], categoryIndex) => (
-            <motion.div
-              key={category}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: categoryIndex * 0.1 }}
-              className="glass rounded-2xl p-6"
-            >
-              <h3 className="text-2xl font-bold mb-6 text-foreground">
-                {categoryLabels[category as keyof typeof categoryLabels]}
-              </h3>
-              <div className="space-y-4">
-                {items.map((item, index) => (
-                  <motion.div
-                    key={item.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: categoryIndex * 0.1 + index * 0.05 }}
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-gray-700 dark:text-gray-300 font-medium">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* 3D Ring */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="h-96 w-full"
+          >
+            <TechScene />
+          </motion.div>
+
+          {/* Category Lists */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            {Object.entries(TECH_STACK).map(([category, items], categoryIndex) => {
+              const categoryLabels: Record<string, string> = {
+                languages: "Languages",
+                ml: "ML/AI",
+                cloud: "Cloud & Data",
+                systems: "Systems & Tools",
+              };
+
+              return (
+                <motion.div
+                  key={category}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: categoryIndex * 0.1 }}
+                  className="glass rounded-2xl p-6"
+                >
+                  <h3 className="text-xl font-bold mb-4 text-foreground font-display">
+                    {categoryLabels[category]}
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {items.map((item) => (
+                      <span
+                        key={item.name}
+                        className="px-4 py-2 rounded-full text-sm bg-gradient-to-r from-purple-500/10 to-pink-500/10 dark:from-green-500/10 dark:to-teal-500/10 text-foreground border border-purple-500/20 dark:border-green-500/20 hover:scale-105 transition-transform"
+                      >
                         {item.name}
                       </span>
-                      <span className="text-sm text-gray-500 dark:text-gray-400">
-                        {item.level}%
-                      </span>
-                    </div>
-                    <div className="h-2 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${item.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{
-                          duration: 1,
-                          delay: categoryIndex * 0.1 + index * 0.05,
-                          ease: "easeOut",
-                        }}
-                        className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
-                      />
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                    ))}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
         </div>
       </div>
     </section>
   );
 }
-
