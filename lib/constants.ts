@@ -8,9 +8,9 @@ export const SECTIONS = [
 ] as const;
 
 export const SOCIAL_LINKS = {
-  github: "https://github.com/nabilshah",
+  github: "https://github.com/Nabzx",
   linkedin: "https://linkedin.com/in/nabilshah",
-  email: "mailto:nabil@example.com",
+  email: "mailto:nabilshahx@gmail.com",
 };
 
 export const EXPERIENCE = [
@@ -33,7 +33,7 @@ export const PROJECTS = [
     title: "TradeFlux AI",
     description: "High-frequency trading system with real-time data processing and LSTM forecasting",
     tech: ["Next.js", "Kafka", "Redis", "LSTM", "AWS Lambda", "SwiftUI"],
-    github: "https://github.com/nabilshah/tradeflux",
+    github: "https://github.com/Nabzx/TradeFluxAI",
     highlights: [
       "50K+ ticks/min Kafka→Redis pipeline",
       "<120ms latency, LSTM forecaster (200K+ data points)",
@@ -46,7 +46,7 @@ export const PROJECTS = [
     title: "FianchettoX Chess Engine",
     description: "High-performance chess engine with neural network evaluation",
     tech: ["C++", "Docker", "ONNX", "Bitboards", "Alpha-Beta"],
-    github: "https://github.com/nabilshah/fianchetto",
+    github: "https://github.com/Nabzx/Fianchetto-Engine",
     highlights: [
       "Bitboards, alpha-beta pruning, transposition tables",
       "Zobrist hashing, ONNX neural evaluation",
@@ -59,7 +59,7 @@ export const PROJECTS = [
     title: "Morgan Stanley Trading Bot",
     description: "Algorithmic trading system developed for high-frequency market operations",
     tech: ["Python", "Real-time APIs", "ML", "Backtesting", "Risk Management"],
-    github: "",
+    github: "https://github.com/Nabzx/MSTradingCompetition",
     highlights: [
       "Real-time market data processing",
       "Advanced algorithmic strategies",
@@ -72,7 +72,7 @@ export const PROJECTS = [
     title: "Python Black Hole Simulator",
     description: "Physics simulation of black hole dynamics and gravitational effects",
     tech: ["Python", "NumPy", "Matplotlib", "Physics Simulation"],
-    github: "",
+    github: "https://github.com/Nabzx/Black-Hole-Simulator",
     highlights: [
       "Accurate gravitational calculations",
       "Visualisation of spacetime curvature",
@@ -85,7 +85,7 @@ export const PROJECTS = [
     title: "ICU Risk Prediction (BigQuery)",
     description: "Machine learning model for predicting ICU patient risk using BigQuery analytics",
     tech: ["BigQuery", "Python", "ML", "Healthcare Analytics"],
-    github: "",
+    github: "https://github.com/Nabzx/Synthea-ICU-Risk-Prediction-Multimodal-Patient-Analysis",
     highlights: [
       "Large-scale healthcare data analysis",
       "Real-time risk scoring",
@@ -98,7 +98,7 @@ export const PROJECTS = [
     title: "AI Study Buddy (Next.js + OpenAI)",
     description: "Intelligent study assistant powered by OpenAI for personalised learning",
     tech: ["Next.js", "OpenAI", "TypeScript", "TailwindCSS"],
-    github: "",
+    github: "https://github.com/Nabzx/IBMHACKATHON",
     highlights: [
       "Personalised study plans",
       "AI-powered explanations",
