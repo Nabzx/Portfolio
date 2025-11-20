@@ -80,7 +80,8 @@ export function Hero() {
             I'm a final year Computer Science student with a First Class prediction, currently 
             interning as a Software Engineer at Minexx. I specialise in building scalable 
             systems, AI pipelines, and multi-agent reinforcement learning. Outside of work, 
-            I enjoy MMA, playing the piano, chess, competitive debating and all things Star Wars. 
+            I enjoy MMA, playing the piano, chess, competitive debating and travelling. 
+            Self Improvement is my motto and I'm always looking for new challenges and opportunities to grow.
             I'm actively working towards postgraduate study at Oxford and aiming for a 
             future role at a FAANG company.
           </p>
