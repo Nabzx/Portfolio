@@ -1,0 +1,176 @@
+---
+import Base from './Base.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow: string;
+  year: string;
+  role: string;
+  stack: string[];
+  next: { title: string; href: string };
+}
+
+const { title, description, eyebrow, year, role, stack, next } = Astro.props;
+---
+
+<Base title={`${title} — Nabil Shah`} description={description}>
+  <article>
+    <header class="p-hero">
+      <div class="wrap">
+        <a class="p-back" href="/#work">← All work</a>
+        <p class="eyebrow p-eyebrow">{eyebrow}</p>
+        <h1 class="p-title">{title}</h1>
+        <dl class="p-meta">
+          <div>
+            <dt>Year</dt>
+            <dd>{year}</dd>
+          </div>
+          <div>
+            <dt>Role</dt>
+            <dd>{role}</dd>
+          </div>
+          <div>
+            <dt>Stack</dt>
+            <dd>{stack.join(' · ')}</dd>
+          </div>
+        </dl>
+      </div>
+    </header>
+
+    <div class="wrap p-body prose">
+      <slot />
+    </div>
+
+    <footer class="p-next">
+      <div class="wrap">
+        <p class="eyebrow">Next project</p>
+        <a class="p-next-link" href={next.href}>{next.title} <span aria-hidden="true">→</span></a>
+      </div>
+    </footer>
+  </article>
+</Base>
+
+<style>
+  .p-hero {
+    padding-top: 9.5rem;
+    padding-bottom: clamp(3rem, 7vw, 5rem);
+    border-bottom: 1px solid var(--line);
+    background:
+      radial-gradient(60rem 28rem at 85% -20%, var(--paper-deep), transparent 70%),
+      var(--paper);
+  }
+
+  .p-back {
+    display: inline-block;
+    margin-bottom: 3rem;
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink-soft);
+    transition: color 0.25s var(--ease-out);
+  }
+
+  .p-back:hover {
+    color: var(--ink);
+  }
+
+  .p-eyebrow {
+    margin-bottom: 1.25rem;
+  }
+
+  .p-title {
+    font-size: clamp(2.3rem, 5.5vw, 4.2rem);
+    max-width: 22ch;
+  }
+
+  .p-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(1.5rem, 5vw, 4.5rem);
+    margin-top: clamp(2rem, 5vw, 3.25rem);
+  }
+
+  .p-meta dt {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .p-meta dd {
+    margin: 0.35rem 0 0;
+    font-size: 0.95rem;
+    color: var(--ink-strong);
+    max-width: 26rem;
+  }
+
+  .p-body {
+    padding-block: clamp(4rem, 9vw, 7rem);
+    max-width: 46rem;
+    color: var(--ink-strong);
+  }
+
+  .p-body :global(h2) {
+    font-size: 1.6rem;
+    margin: 2.75em 0 0.9em;
+    color: var(--ink);
+  }
+
+  .p-body :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .p-body :global(.lede) {
+    font-family: var(--serif);
+    font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  .p-body :global(ul) {
+    padding-left: 1.1rem;
+    margin-top: 1.2em;
+  }
+
+  .p-body :global(li) {
+    margin-bottom: 0.55em;
+  }
+
+  .p-body :global(li::marker) {
+    color: var(--ink-faint);
+  }
+
+  .p-body :global(.pull) {
+    margin: 2.5em 0;
+    padding: 1.75rem 2rem;
+    border-left: 2px solid var(--ink);
+    background: var(--paper-deep);
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  .p-next {
+    border-top: 1px solid var(--line);
+    background: var(--paper-deep);
+    padding-block: clamp(3.5rem, 8vw, 5.5rem);
+  }
+
+  .p-next-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3.4vw, 2.5rem);
+    text-decoration: none;
+    transition: transform 0.4s var(--ease-out);
+  }
+
+  .p-next-link:hover {
+    transform: translateX(0.5rem);
+  }
+</style>

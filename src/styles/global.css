@@ -1,0 +1,183 @@
+/* ---------------------------------------------------------------
+   Nabil Shah — design tokens
+   Pure monochrome: sumi ink on washi paper. No accent colour.
+   Hierarchy is carried by ink density alone.
+--------------------------------------------------------------- */
+:root {
+  --paper: #faf9f5;
+  --paper-deep: #f2f1ea;
+  --ink: #1c1b17;
+  --ink-strong: #55534a;
+  --ink-soft: #6f6d63;
+  --ink-faint: #a4a297;
+  --line: #e3e2d9;
+
+  --serif: 'Shippori Mincho', 'Iowan Old Style', Georgia, serif;
+  --sans: 'Instrument Sans', -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'IBM Plex Mono', 'SF Mono', Menlo, monospace;
+
+  --max: 76rem;
+  --gutter: clamp(1.25rem, 5vw, 3.5rem);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ------------------------------- reset ------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* --------------------------- typography ----------------------- */
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.prose p + p {
+  margin-top: 1.4em;
+}
+
+.prose em {
+  font-family: var(--serif);
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+
+/* ---------------------------- layout -------------------------- */
+.wrap {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: clamp(5.5rem, 12vw, 9.5rem);
+}
+
+.section + .section {
+  border-top: 1px solid var(--line);
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.section-head::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+  transform: translateY(-0.35em);
+}
+
+/* ------------------------ scroll reveal ----------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition:
+    opacity 0.9s var(--ease-out),
+    transform 0.9s var(--ease-out);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ------------------------- link styles ------------------------ */
+.ink-link {
+  position: relative;
+  text-decoration: none;
+  padding-bottom: 2px;
+  background-image: linear-gradient(var(--ink), var(--ink));
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  transition: color 0.3s var(--ease-out);
+}
+
+.ink-link:hover {
+  color: var(--ink-strong);
+}
+
+/* --------------------- reduced motion ------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

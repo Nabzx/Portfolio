@@ -1,0 +1,74 @@
+---
+import Project from '../../layouts/Project.astro';
+---
+
+<Project
+  title="Cooperative Capabilities of AI Systems"
+  description="Undergraduate dissertation on multi-agent reinforcement learning: how communication constraints and reward design shape emergent cooperation between autonomous agents."
+  eyebrow="Undergraduate dissertation"
+  year="2025 — 2026"
+  role="Research, experimentation & analysis"
+  stack={['PyTorch', 'PettingZoo', 'PPO', 'MARL', 'Reinforcement Learning']}
+  next={{ title: 'Neuroplastic Collective Intelligence', href: '/projects/neuroplastic-collective-intelligence' }}
+>
+  <p class="lede">
+    When autonomous agents learn side by side, cooperation is not something you program — it is
+    something that emerges, or fails to. My dissertation asked what makes the difference: how do
+    communication constraints and reward design shape the cooperative behaviours that arise
+    between learning agents?
+  </p>
+
+  <h2>The question</h2>
+  <p>
+    Much of contemporary AI progress is empirical, but performance is often constrained less by
+    data than by architecture and optimisation. Multi-agent reinforcement learning makes this
+    vivid: the same learning algorithm can produce coordination or chaos depending on what agents
+    are rewarded for and how much they are allowed to say to one another. I set out to study that
+    sensitivity systematically — treating cooperation itself as the object of measurement.
+  </p>
+
+  <h2>Approach</h2>
+  <p>
+    I implemented PPO-based agents in PyTorch and trained them in PettingZoo simulation
+    environments, then ran controlled experiments across two axes:
+  </p>
+  <ul>
+    <li>
+      <strong>Communication bandwidth</strong> — restricting how much information agents could
+      exchange, from silence up to rich channels, and observing which communication strategies
+      emerged under each constraint.
+    </li>
+    <li>
+      <strong>Reward design</strong> — varying how credit was distributed between individual and
+      shared outcomes, from fully selfish to fully collective incentive structures.
+    </li>
+  </ul>
+  <p>
+    The focus throughout was experimentation and evaluation: defining measurable signatures of
+    coordination, then analysing the strategies agents actually converged on rather than the ones
+    the incentive design intended.
+  </p>
+
+  <h2>The counterintuitive result</h2>
+  <div class="pull">
+    Selfish incentives produced the most cooperation. Agents rewarded individually coordinated
+    better than agents rewarded collectively — a result I traced back to the credit assignment
+    problem.
+  </div>
+  <p>
+    Under shared rewards, no agent could tell which of its actions had actually helped, and
+    learning signals dissolved into noise; under individual rewards, the gradient each agent
+    received was clean enough to learn behaviours that happened to be mutually beneficial.
+    Cooperation, in other words, was bottlenecked by optimisation — not by intent. That finding
+    reshaped how I think about collective systems, and it is what pushed me deeper into the
+    mathematics of reinforcement learning.
+  </p>
+
+  <h2>Where it’s going</h2>
+  <p>
+    The work earned First Class marks and is now being prepared for workshop submission. It also
+    seeded my current research: if credit assignment limits what fixed communication structures
+    can achieve, the natural next question is whether the structure itself should learn — which
+    is exactly what my work on neuroplastic collective intelligence explores.
+  </p>
+</Project>

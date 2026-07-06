@@ -1,0 +1,78 @@
+---
+import Project from '../../layouts/Project.astro';
+---
+
+<Project
+  title="Neuroplastic Collective Intelligence"
+  description="Ongoing research: can neuroplastic communication mechanisms from computational neuroscience improve emergent coordination and functional specialisation in collective AI systems?"
+  eyebrow="Ongoing research"
+  year="2026 — present"
+  role="Independent research"
+  stack={['Python', 'PyTorch', 'PettingZoo', 'NetworkX', 'NumPy']}
+  next={{ title: 'Humanitarian Aid Platform', href: '/projects/humanitarian-aid-platform' }}
+>
+  <p class="lede">
+    Biological intelligence does not communicate over fixed wiring. Synapses strengthen with use,
+    weaken with neglect, and the network’s topology is itself a product of learning. This project
+    asks whether the same principle — plasticity in the connections, not just the nodes — can
+    improve how collective AI systems coordinate.
+  </p>
+
+  <h2>The hypothesis</h2>
+  <p>
+    In most multi-agent systems, who talks to whom is decided by the designer and frozen before
+    training begins. But my dissertation suggested that communication structure is precisely where
+    coordination succeeds or fails. Computational neuroscience offers an alternative: let the
+    communication graph adapt by rules inspired by neuroplasticity, so that useful channels
+    strengthen and useless ones decay. If the hypothesis holds, coordination and functional
+    specialisation should <em>emerge from the topology’s own learning</em> rather than needing to
+    be designed in.
+  </p>
+
+  <h2>The framework</h2>
+  <p>
+    I am developing a multi-agent framework in which agents learn cooperative tasks while their
+    communication network rewires around them:
+  </p>
+  <ul>
+    <li>
+      <strong>Hebbian-inspired plasticity</strong> — connection strengths update locally, driven
+      by correlated activity between agents rather than by a global controller.
+    </li>
+    <li>
+      <strong>Adaptive communication graphs</strong> — message passing runs over a weighted graph
+      whose edges are themselves learnable, implemented with PyTorch and NetworkX.
+    </li>
+    <li>
+      <strong>Dynamic topology</strong> — the interaction structure can sparsify, cluster and
+      reorganise during training, and those trajectories are recorded as data.
+    </li>
+    <li>
+      <strong>Functional specialisation</strong> — measuring whether agents differentiate into
+      roles as the network shapes who hears what.
+    </li>
+  </ul>
+
+  <h2>Measuring emergence</h2>
+  <p>
+    Claims about emergent behaviour are easy to make and hard to substantiate, so evaluation is
+    the core of the project. I analyse the systems with graph-theoretic measures of the evolving
+    topology and information-theoretic measures of what actually flows across it — asking not
+    just whether cooperative benchmarks improve, but whether the communication structure carries
+    measurable, non-trivial information about the task.
+  </p>
+
+  <div class="pull">
+    The goal is not another architecture. It is evidence about a question: does letting
+    communication itself learn produce coordination that fixed structures cannot reach?
+  </div>
+
+  <h2>Why it matters</h2>
+  <p>
+    As AI systems become collections of interacting agents rather than single models, the
+    machinery of coordination becomes a first-class research problem — and a safety-relevant one.
+    Systems whose interaction structure adapts transparently, in ways we can measure and
+    interpret, are systems we can deploy with more confidence. This project is my current step
+    toward doctoral research in that direction.
+  </p>
+</Project>

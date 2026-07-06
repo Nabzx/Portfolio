@@ -1,0 +1,62 @@
+<svg viewBox="0 0 520 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ink-wash portrait placeholder">
+  <defs>
+    <filter id="wash" x="-25%" y="-25%" width="150%" height="150%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.011 0.015" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="38"/>
+      <feGaussianBlur stdDeviation="1.4"/>
+    </filter>
+    <filter id="wash2" x="-25%" y="-25%" width="150%" height="150%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02 0.028" numOctaves="3" seed="21" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="14"/>
+      <feGaussianBlur stdDeviation="0.9"/>
+    </filter>
+    <radialGradient id="body" cx="50%" cy="38%" r="70%">
+      <stop offset="0%" stop-color="#44423a"/>
+      <stop offset="65%" stop-color="#5d5b51"/>
+      <stop offset="100%" stop-color="#96948a"/>
+    </radialGradient>
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e0ded2"/>
+      <stop offset="65%" stop-color="#e8e6db"/>
+      <stop offset="100%" stop-color="#e8e6db" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="dissolve" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="78%" stop-color="#fff"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="fade-bottom">
+      <rect width="520" height="640" fill="url(#dissolve)"/>
+    </mask>
+  </defs>
+
+  <g mask="url(#fade-bottom)">
+
+  <!-- soft halo wash, fades to nothing -->
+  <ellipse cx="262" cy="320" rx="228" ry="275" fill="url(#halo)" opacity="0.7" filter="url(#wash)"/>
+
+  <!-- shoulders -->
+  <path d="M108 640 C118 512 190 462 260 454 C330 462 402 512 412 640 Z"
+        fill="url(#body)" opacity="0.85" filter="url(#wash)"/>
+
+  <!-- neck -->
+  <path d="M230 388 L290 388 L296 470 L224 470 Z" fill="url(#body)" opacity="0.8" filter="url(#wash2)"/>
+
+  <!-- head -->
+  <ellipse cx="258" cy="282" rx="100" ry="122" fill="url(#body)" opacity="0.9" filter="url(#wash)"/>
+
+  <!-- hair: short, flat cap -->
+  <path d="M156 288
+           C150 190 198 118 260 116
+           C322 118 368 190 362 288
+           C354 226 326 186 258 184
+           C190 186 164 226 156 288 Z"
+        fill="#232219" opacity="0.92" filter="url(#wash2)"/>
+
+  <!-- ink flecks -->
+  <circle cx="112" cy="158" r="4.4" fill="#1c1b17" opacity="0.4" filter="url(#wash2)"/>
+  <circle cx="430" cy="216" r="3" fill="#1c1b17" opacity="0.35" filter="url(#wash2)"/>
+  <circle cx="418" cy="512" r="5.2" fill="#1c1b17" opacity="0.25" filter="url(#wash2)"/>
+  <circle cx="86" cy="452" r="2.4" fill="#1c1b17" opacity="0.38" filter="url(#wash2)"/>
+  </g>
+</svg>
