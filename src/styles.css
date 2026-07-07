@@ -357,22 +357,7 @@ body::after {
   margin-bottom: 1.75rem;
 }
 
-.hero-proof {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 0;
-  color: var(--dim);
-  margin-bottom: 2.5rem;
-}
-.hero-proof li { display: flex; align-items: center; }
-.hero-proof li + li::before {
-  content: "·";
-  margin: 0 0.75rem;
-  color: var(--book);
-}
-
-.hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.85rem; }
 
 .hero-hud {
   position: absolute;
@@ -817,15 +802,22 @@ body::after {
 }
 .pursuits li:hover { color: var(--cream); }
 
-/* the bookshelf */
+/* the bookshelf — one long shelf, filled to the brim */
+.bookshelf-wrap {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-top: 1.1rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--clay-deep) transparent;
+}
 .bookshelf {
   list-style: none;
   display: flex;
   align-items: flex-end;
-  gap: 0.45rem;
-  height: 15rem;
-  min-width: 0;
-  padding: 0 1.25rem;
+  gap: 0.35rem;
+  height: 15.5rem;
+  min-width: 100%;
+  padding: 0 0.5rem;
   border-bottom: 2px solid rgba(240, 238, 230, 0.25);
 }
 .book {
@@ -836,9 +828,8 @@ body::after {
   justify-content: center;
   gap: 0.9rem;
   writing-mode: vertical-rl;
-  flex: 1 1 0;
-  min-width: 0;
-  max-width: 3rem;
+  flex: 1 1 auto;
+  width: 2.85rem;
   padding: 1rem 0;
   border-radius: 3px 3px 0 0;
   font-family: var(--font-mono);
@@ -867,11 +858,11 @@ body::after {
 .sp-black { background: #171512; color: var(--crail); border: 1px solid rgba(217, 119, 87, 0.3); }
 
 /* formats */
-.book { height: 12rem; overflow: hidden; }
-.b-tall { height: 13.5rem; }
-.b-short { height: 10.5rem; }
-.b-wide { max-width: 3.8rem; }
-.b-manga { height: 9.25rem; max-width: 2.5rem; gap: 0.3rem; }
+.book { height: 12.5rem; overflow: hidden; min-width: 2.3rem; }
+.b-tall { height: 14rem; }
+.b-short { height: 11rem; }
+.b-wide { width: 3.6rem; min-width: 2.9rem; }
+.b-manga { height: 9.5rem; width: 2.4rem; min-width: 2rem; gap: 0.3rem; }
 .b-manga .book-title { font-size: 0.66rem; }
 
 .book.lean {
@@ -880,24 +871,8 @@ body::after {
 }
 .book.lean:hover { transform: rotate(0deg) translateY(-0.5rem); }
 
-/* the library: shelves in a responsive case, labelled by genre */
+/* the library */
 .library { margin-top: clamp(3rem, 7vh, 5rem); }
-
-.bookcase {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
-  gap: 2.75rem 3.5rem;
-}
-
-.shelf-unit { min-width: 0; }
-
-.shelf-label {
-  margin-top: 0.7rem;
-  color: var(--dim);
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
-}
-.shelf-label::before { content: "— "; color: var(--book); }
 
 /* ---------- contact ---------- */
 .contact-display {
@@ -1053,17 +1028,17 @@ body::after {
 @media (max-width: 640px) {
   .section-note { display: none; }
   .hero-inner { padding-top: 6rem; padding-bottom: 7rem; }
-  .hero-proof { flex-direction: column; gap: 0.45rem; }
-  .hero-proof li + li::before { content: none; }
   .hero-scrollcue { display: none; }
   .hero-hud { font-size: 0.68rem; right: var(--gutter); }
   .work-head { gap: 0.85rem; }
   .pursuits { grid-template-columns: repeat(2, minmax(0, max-content)); gap: 0.6rem 2.25rem; }
-  .bookshelf { height: 12rem; padding: 0 0.75rem; gap: 0.35rem; }
-  .book { height: 9.5rem; }
-  .b-tall { height: 10.75rem; }
-  .b-short { height: 8.25rem; }
-  .b-manga { height: 7.25rem; }
+  .bookshelf { height: 13.75rem; padding: 0 0.5rem; }
+  .book { height: 11rem; }
+  .b-tall { height: 12.25rem; }
+  .b-short { height: 9.75rem; }
+  .b-manga { height: 8.5rem; }
+  .book-title { font-size: 0.62rem; }
+  .b-manga .book-title { font-size: 0.58rem; }
   .contact-actions { align-items: flex-start; flex-direction: column; }
 }
 

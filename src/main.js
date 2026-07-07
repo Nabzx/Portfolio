@@ -227,8 +227,7 @@ if (reducedMotion) {
     .to('.hero-eyebrow', { opacity: 1, duration: 0.7 }, 0.4)
     .to('.hero-motto', { opacity: 1, y: 0, duration: 0.8 }, 0.95)
     .to('.hero-sub', { opacity: 1, y: 0, duration: 0.8 }, 1.1)
-    .to('.hero-proof', { opacity: 1, duration: 0.8 }, 1.25)
-    .to('.hero-cta', { opacity: 1, duration: 0.8 }, 1.4);
+    .to('.hero-cta', { opacity: 1, duration: 0.8 }, 1.25);
 
   /* hero content drifts up as you scroll away */
   gsap.to('.hero-inner', {
