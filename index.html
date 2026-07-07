@@ -81,7 +81,7 @@
       <div class="section-head">
         <h2 class="section-label mono" id="work-label" aria-label="Section 1 — selected work"><span class="star" aria-hidden="true">✳</span> <span class="label-text">01 — selected work</span></h2>
         <span class="section-rule" aria-hidden="true"></span>
-        <p class="section-note mono">three figures · click a row to expand</p>
+        <p class="section-note mono">six figures · click a row to expand</p>
       </div>
 
       <article class="work-row is-open" data-accordion>
@@ -95,8 +95,8 @@
         </h3>
         <div class="work-panel" id="panel-bidnet">
           <div class="work-panel-inner">
-            <div class="work-figure" data-figure="activation" role="img" aria-label="Figure 1.1: a sparse expert activation matrix">
-              <p class="fig-caption mono" aria-hidden="true">fig. 1.1 — experts bidding for compute</p>
+            <div class="work-figure" data-figure="bidding" role="img" aria-label="Figure 1.1: samples bidding across to experts, winning routes highlighted">
+              <p class="fig-caption mono" aria-hidden="true">fig. 1.1 — six samples, five experts, one auction</p>
             </div>
             <div class="work-body">
               <p class="work-desc">
@@ -126,8 +126,8 @@
         </h3>
         <div class="work-panel" id="panel-fianchetto">
           <div class="work-panel-inner">
-            <div class="work-figure" data-figure="chessheat" role="img" aria-label="Figure 1.2: evaluation heat over a chessboard">
-              <p class="fig-caption mono" aria-hidden="true">fig. 1.2 — evaluation heat over the board</p>
+            <div class="work-figure" data-figure="chessboard" role="img" aria-label="Figure 1.2: a chessboard in a double-fianchetto position">
+              <p class="fig-caption mono" aria-hidden="true">fig. 1.2 — the double fianchetto, naturally</p>
             </div>
             <div class="work-body">
               <p class="work-desc">
@@ -157,8 +157,8 @@
         </h3>
         <div class="work-panel" id="panel-aid">
           <div class="work-panel-inner">
-            <div class="work-figure" data-figure="scatter" role="img" aria-label="Figure 1.3: humanitarian camps clustered by need">
-              <p class="fig-caption mono" aria-hidden="true">fig. 1.3 — camps, clustered by need</p>
+            <div class="work-figure" data-figure="aidmap" role="img" aria-label="Figure 1.3: a map of Africa with camps and supply routes from a central hub">
+              <p class="fig-caption mono" aria-hidden="true">fig. 1.3 — camps mapped, aid routed</p>
             </div>
             <div class="work-body">
               <p class="work-desc">
@@ -171,6 +171,95 @@
                 <li class="stat"><span class="stat-value">0</span><span class="stat-label mono">records exposed to third parties</span></li>
               </ul>
               <ul class="work-tags mono" aria-label="Technologies"><li>Local LLM</li><li>Forecasting</li><li>Privacy by design</li></ul>
+              <a class="text-link mono work-link" href="https://github.com/Nabzx" target="_blank" rel="noopener">view on github ↗</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-row" data-accordion>
+        <h3 class="work-heading">
+          <button class="work-head" type="button" aria-expanded="false" aria-controls="panel-trading">
+            <span class="work-index mono" aria-hidden="true">P.04</span>
+            <span class="work-title">The winning trading strategy</span>
+            <span class="work-year mono">1st place</span>
+            <span class="work-toggle" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <div class="work-panel" id="panel-trading">
+          <div class="work-panel-inner">
+            <div class="work-figure" data-figure="candles" role="img" aria-label="Figure 1.4: a candlestick chart drifting upward from a dashed entry level">
+              <p class="fig-caption mono" aria-hidden="true">fig. 1.4 — one session, long the right side</p>
+            </div>
+            <div class="work-body">
+              <p class="work-desc">
+                First place at the Morgan Stanley trading competition — a systematic strategy taken
+                from signal to execution under competition constraints.
+              </p>
+              <ul class="work-stats" aria-label="Key results">
+                <li class="stat"><span class="stat-value">1st</span><span class="stat-label mono">Morgan Stanley trading competition</span></li>
+                <li class="stat"><span class="stat-value">live</span><span class="stat-label mono">signal → execution, end to end</span></li>
+              </ul>
+              <ul class="work-tags mono" aria-label="Technologies"><li>Quant strategy</li><li>Risk management</li><li>Python</li></ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-row" data-accordion>
+        <h3 class="work-heading">
+          <button class="work-head" type="button" aria-expanded="false" aria-controls="panel-icu">
+            <span class="work-index mono" aria-hidden="true">P.05</span>
+            <span class="work-title">ICU risk, predicted early</span>
+            <span class="work-year mono">2025</span>
+            <span class="work-toggle" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <div class="work-panel" id="panel-icu">
+          <div class="work-panel-inner">
+            <div class="work-figure" data-figure="ecg" role="img" aria-label="Figure 1.5: an ECG trace with one anomalous beat flagged">
+              <p class="fig-caption mono" aria-hidden="true">fig. 1.5 — the beat that matters</p>
+            </div>
+            <div class="work-body">
+              <p class="work-desc">
+                ICU risk prediction over patient-vector embeddings — built while working through
+                Bishop, chapter by chapter.
+              </p>
+              <ul class="work-stats" aria-label="Key results">
+                <li class="stat"><span class="stat-value">k-NN</span><span class="stat-label mono">over vector embeddings</span></li>
+                <li class="stat"><span class="stat-value">early</span><span class="stat-label mono">warning, before the monitor alarms</span></li>
+              </ul>
+              <ul class="work-tags mono" aria-label="Technologies"><li>Scikit-learn</li><li>Embeddings</li><li>Healthcare</li></ul>
+              <a class="text-link mono work-link" href="https://github.com/Nabzx" target="_blank" rel="noopener">view on github ↗</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-row" data-accordion>
+        <h3 class="work-heading">
+          <button class="work-head" type="button" aria-expanded="false" aria-controls="panel-transcribe">
+            <span class="work-index mono" aria-hidden="true">P.06</span>
+            <span class="work-title">Lectures, structured live</span>
+            <span class="work-year mono">2025</span>
+            <span class="work-toggle" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <div class="work-panel" id="panel-transcribe">
+          <div class="work-panel-inner">
+            <div class="work-figure" data-figure="transcript" role="img" aria-label="Figure 1.6: an audio waveform transformed into a structured outline">
+              <p class="fig-caption mono" aria-hidden="true">fig. 1.6 — speech in, structure out</p>
+            </div>
+            <div class="work-body">
+              <p class="work-desc">
+                Assistive real-time transcription for students with specific learning disabilities —
+                lecture content structured as it happens.
+              </p>
+              <ul class="work-stats" aria-label="Key results">
+                <li class="stat"><span class="stat-value">live</span><span class="stat-label mono">structuring, mid-lecture</span></li>
+                <li class="stat"><span class="stat-value">SpLD</span><span class="stat-label mono">designed for, from day one</span></li>
+              </ul>
+              <ul class="work-tags mono" aria-label="Technologies"><li>Speech-to-text</li><li>Accessibility</li><li>Real-time</li></ul>
               <a class="text-link mono work-link" href="https://github.com/Nabzx" target="_blank" rel="noopener">view on github ↗</a>
             </div>
           </div>

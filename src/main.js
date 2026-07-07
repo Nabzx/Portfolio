@@ -100,7 +100,7 @@ function animateRowContent(row) {
   const stats = row.querySelectorAll('[data-count]');
   if (reducedMotion) return;
   const figure = row.querySelector('.work-figure');
-  const cells = row.querySelectorAll('.fig-heatmap span');
+  const cells = row.querySelectorAll('.fig-heatmap span, .chess-board .chess-cell');
   gsap.fromTo(figure,
     { clipPath: 'inset(0 100% 0 0)' },
     { clipPath: 'inset(0 0% 0 0)', duration: 0.95, ease: 'expo.out', delay: 0.12 }
