@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cooperative AI — Nabil Shah</title>
+  <meta name="description" content="Emergence in multi-agent reinforcement learning — dissertation notes by Nabil Shah." />
+  <meta name="theme-color" content="#1f1e1b" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body>
+  <header class="topbar is-scrolled">
+    <a class="wordmark" href="/" aria-label="Nabil Shah — home">N·S</a>
+    <p class="session-tag mono" aria-hidden="true"><span class="star">✳</span>&nbsp;research&nbsp;notes</p>
+    <a class="btn btn-solid btn-small" href="mailto:nabilshahx@gmail.com?subject=Cooperative%20AI">Hire me</a>
+  </header>
+
+  <main class="page-main">
+    <p class="page-eyebrow mono">dissertation · 2026 · workshop submission in preparation</p>
+    <h1 class="page-title">Cooperative AI — emergence in multi-agent reinforcement learning</h1>
+    <p class="page-lead">
+      How do communication constraints and reward design shape cooperation between learning
+      agents? My dissertation studies emergent coordination in MARL systems — and finds that the
+      obvious levers often pull the wrong way.
+    </p>
+
+    <div class="prose">
+      <h2>setup</h2>
+      <p>
+        PPO agents implemented in <strong>PyTorch</strong> inside <strong>PettingZoo</strong>
+        cooperative environments. Two axes are varied systematically: the communication bandwidth
+        available between agents, and the reward structure — from fully selfish to fully shared.
+        Coordination is measured, not eyeballed.
+      </p>
+
+      <h2>the counterintuitive result</h2>
+      <p>
+        <strong>Selfish incentives produced the most cooperation.</strong> Shared rewards sound
+        cooperative, but they blur credit assignment: no agent can tell which of its actions
+        earned the reward, so the gradient signal washes out. Selfish rewards keep the signal
+        sharp — and cooperation emerges anyway, because it is <em>instrumentally useful</em>
+        rather than imposed.
+      </p>
+
+      <h2>where it goes</h2>
+      <p>
+        A workshop submission is in preparation. The thread continues in my ongoing work on
+        <a class="text-link" href="/research/neuroplastic.html">neuroplastic collective intelligence</a> —
+        the same question of emergence, with the communication topology itself made plastic.
+      </p>
+    </div>
+
+    <footer class="page-footer mono">
+      <a class="text-link" href="/#research">← back to research</a>
+      <span><span class="star">✳</span> full dissertation on request — <a class="text-link" href="mailto:nabilshahx@gmail.com?subject=Dissertation">ask</a></span>
+    </footer>
+  </main>
+</body>
+</html>

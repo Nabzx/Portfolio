@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TandemRLVR — Nabil Shah</title>
+  <meta name="description" content="Training reasoning agents to remain legible to weaker overseers — research notes by Nabil Shah." />
+  <meta name="theme-color" content="#1f1e1b" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body>
+  <header class="topbar is-scrolled">
+    <a class="wordmark" href="/" aria-label="Nabil Shah — home">N·S</a>
+    <p class="session-tag mono" aria-hidden="true"><span class="star">✳</span>&nbsp;research&nbsp;notes</p>
+    <a class="btn btn-solid btn-small" href="mailto:nabilshahx@gmail.com?subject=TandemRLVR">Hire me</a>
+  </header>
+
+  <main class="page-main">
+    <p class="page-eyebrow mono">ongoing · scalable oversight · draft notes</p>
+    <h1 class="page-title">TandemRLVR — training reasoning agents to remain legible to weaker overseers</h1>
+    <p class="page-lead">
+      Stronger models shouldn't just be right — their reasoning should be checkable by something
+      weaker than they are. TandemRLVR asks whether reasoning agents can be trained and evaluated
+      not only for final-answer correctness, but for producing intermediate reasoning a weaker
+      overseer can inspect, continue, and verify.
+    </p>
+
+    <div class="prose">
+      <h2>the core loop</h2>
+      <div class="flow">task → <b>senior reasoning</b> → junior completion → <b>verifier</b> → metrics</div>
+      <p>
+        A senior agent reasons partway through a task, then hands off. A junior agent —
+        deliberately weaker — must pick up the trace and finish. A verifier scores the outcome.
+        If the senior's reasoning is legible, the junior succeeds more often: legibility stops
+        being an aesthetic and becomes a <strong>measurable, trainable quantity</strong>.
+      </p>
+
+      <h2>staging</h2>
+      <ul>
+        <li>Stages 1–2 — heuristic placeholder agents establish the harness, with fully deterministic baselines.</li>
+        <li>Stage 3 — real local LLM agents drop in; the heuristic agents stay on as controls.</li>
+      </ul>
+
+      <h2>why it matters</h2>
+      <p>
+        This is a scalable-oversight question. As models outgrow their overseers, final-answer
+        correctness stops being auditable on its own. Reasoning that survives a weaker reader is
+        reasoning you can actually trust — and RLVR-style training signals can select for it.
+      </p>
+
+      <h2>engineering discipline</h2>
+      <p>
+        Built as clean RL research infrastructure: modular agents, reproducible runs, disciplined
+        evaluation, and experiment outputs you can diff. Developed toward Anthropic's
+        Reinforcement Learning Fellows programme.
+      </p>
+    </div>
+
+    <footer class="page-footer mono">
+      <a class="text-link" href="/#research">← back to research</a>
+      <span><span class="star">✳</span> code available on request — <a class="text-link" href="mailto:nabilshahx@gmail.com?subject=TandemRLVR">ask</a></span>
+    </footer>
+  </main>
+</body>
+</html>
