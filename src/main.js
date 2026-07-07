@@ -12,8 +12,9 @@ window.__gsap = gsap;
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = window.matchMedia('(pointer: fine)').matches;
 
-/* ---------- topbar: blur on scroll, hide on scroll down ---------- */
+/* ---------- topbar + scroll progress ---------- */
 const topbar = document.getElementById('topbar');
+const progress = document.querySelector('.scroll-progress');
 let lastY = window.scrollY;
 window.addEventListener('scroll', () => {
   const y = window.scrollY;
@@ -21,6 +22,8 @@ window.addEventListener('scroll', () => {
   if (y > 160 && y > lastY + 4) topbar.classList.add('is-hidden');
   else if (y < lastY - 4 || y <= 160) topbar.classList.remove('is-hidden');
   lastY = y;
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  if (progress && max > 0) progress.style.transform = `scaleX(${Math.min(1, y / max)})`;
 }, { passive: true });
 
 /* ---------- figures & cursor ---------- */

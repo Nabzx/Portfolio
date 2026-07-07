@@ -57,17 +57,21 @@ export function createCursor() {
     setRingY(ringPos.y - 18);
   });
 
-  // Ring grows over anything interactive; dot stays quiet
+  // Over anything interactive: dot swells into a crail blob, ring blooms
   const HOVERABLE = 'a, button, [data-magnetic]';
   document.addEventListener('pointerover', (e) => {
     if (e.target.closest(HOVERABLE)) {
+      dot.classList.add('is-hover');
       ring.classList.add('is-hover');
-      gsap.to(ring, { scale: 1.5, duration: 0.3, ease: 'power3.out' });
+      gsap.to(dot, { scale: 3.4, duration: 0.3, ease: 'power3.out' });
+      gsap.to(ring, { scale: 1.7, duration: 0.3, ease: 'power3.out' });
     }
   });
   document.addEventListener('pointerout', (e) => {
     if (e.target.closest(HOVERABLE)) {
+      dot.classList.remove('is-hover');
       ring.classList.remove('is-hover');
+      gsap.to(dot, { scale: 1, duration: 0.3, ease: 'power3.out' });
       gsap.to(ring, { scale: 1, duration: 0.3, ease: 'power3.out' });
     }
   });
@@ -75,6 +79,6 @@ export function createCursor() {
     gsap.to(ring, { scale: 0.85, duration: 0.15, ease: 'power2.out' });
   });
   document.addEventListener('pointerup', () => {
-    gsap.to(ring, { scale: ring.classList.contains('is-hover') ? 1.5 : 1, duration: 0.25, ease: 'power3.out' });
+    gsap.to(ring, { scale: ring.classList.contains('is-hover') ? 1.7 : 1, duration: 0.25, ease: 'power3.out' });
   });
 }
