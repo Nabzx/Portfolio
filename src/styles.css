@@ -705,35 +705,101 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* ---------- model card ---------- */
-.modelcard {
+/* ---------- off duty: bio, processes, bookshelf ---------- */
+.offduty {
   display: grid;
-  grid-template-columns: minmax(0, 38ch) 1fr;
-  gap: clamp(2rem, 5vw, 5rem);
+  grid-template-columns: minmax(0, 44ch) 1fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
   align-items: start;
 }
 
-.modelcard-bio p { margin-bottom: 1.25rem; max-width: 40ch; }
-.modelcard-bio p:last-child { margin-bottom: 0; }
-.modelcard-cta-line { color: var(--dim); }
+.offduty-bio p { margin-bottom: 1.25rem; max-width: 42ch; }
+.offduty-cta-line { color: var(--dim); margin-bottom: 2.5rem; }
 
-.modelcard-table {
-  border: 1px solid var(--line);
-  border-radius: 3px;
-  background: var(--bg-2);
+.offduty-sub {
+  color: var(--dim);
+  font-weight: 500;
+  text-transform: lowercase;
+  margin-bottom: 1.25rem;
 }
+.offduty-sub .star { margin-right: 0.35rem; }
 
-.mc-row {
+/* hobbies as running processes */
+.proc-list { list-style: none; }
+.proc-row {
   display: grid;
-  grid-template-columns: 10rem 1fr;
-  gap: 1.5rem;
-  padding: 1.1rem 1.4rem;
+  grid-template-columns: 7.5rem 6.5rem 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 0.7rem 0.25rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.8125rem;
   transition: background-color 0.25s ease-out;
 }
-.mc-row + .mc-row { border-top: 1px solid var(--line); }
-.mc-row:hover { background-color: rgba(217, 119, 87, 0.06); }
-.mc-row dt { color: var(--crail); padding-top: 0.2rem; }
-.mc-row dd { color: var(--paper); }
+.proc-row:last-child { border-bottom: 1px solid var(--line); }
+.proc-row:hover { background-color: rgba(217, 119, 87, 0.06); }
+.proc-name { color: var(--paper); font-weight: 500; }
+.proc-status { color: var(--crail); }
+.proc-status::before { content: "● "; font-size: 0.6em; vertical-align: middle; }
+.proc-note { color: var(--dim); font-size: 0.72rem; }
+
+/* the bookshelf */
+.bookshelf {
+  list-style: none;
+  display: flex;
+  align-items: flex-end;
+  gap: 0.45rem;
+  height: 15rem;
+  padding: 0 1.25rem;
+  border-bottom: 2px solid rgba(240, 238, 230, 0.25);
+}
+.book {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  writing-mode: vertical-rl;
+  width: 3rem;
+  padding: 1rem 0;
+  border-radius: 3px 3px 0 0;
+  font-family: var(--font-mono);
+  cursor: default;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.book:hover { transform: translateY(-0.75rem); }
+
+.book-title {
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 100%;
+}
+.book-author { font-size: 0.6rem; opacity: 0.75; white-space: nowrap; }
+
+.book-1 { height: 14rem; background: #82503c; color: var(--cream); }
+.book-2 { height: 12.5rem; background: var(--crail); color: #241f1b; }
+.book-3 { height: 13.25rem; background: var(--kraft); color: #241f1b; }
+.book-4 {
+  height: 10.5rem;
+  background: var(--bg-2);
+  color: var(--paper);
+  border: 1px solid var(--line);
+  transform: rotate(4deg);
+  transform-origin: bottom left;
+}
+.book-4:hover { transform: rotate(0deg) translateY(-0.5rem); }
+
+.shelf-caption {
+  margin-top: 0.9rem;
+  color: var(--dim);
+  font-size: 0.72rem;
+  font-style: italic;
+}
 
 /* ---------- contact ---------- */
 .contact-display {
@@ -796,8 +862,8 @@ body {
   .xp-item { grid-template-columns: 1fr; }
   .xp-meta { flex-direction: row; gap: 1rem; align-items: baseline; }
 
-  .modelcard { grid-template-columns: 1fr; }
-  .mc-row { grid-template-columns: 8.5rem 1fr; gap: 1rem; }
+  .offduty { grid-template-columns: 1fr; }
+  .bookshelf { max-width: 26rem; }
 }
 
 @media (max-width: 640px) {
@@ -808,7 +874,12 @@ body {
   .hero-scrollcue { display: none; }
   .hero-hud { font-size: 0.68rem; right: var(--gutter); }
   .work-head { gap: 0.85rem; }
-  .mc-row { grid-template-columns: 1fr; gap: 0.35rem; padding: 1rem 1.1rem; }
+  .proc-row { grid-template-columns: 6rem 5.5rem 1fr; gap: 0.6rem; }
+  .proc-note { grid-column: 1 / -1; padding-bottom: 0.2rem; }
+  .bookshelf { height: 13rem; padding: 0 0.75rem; }
+  .book { width: 2.6rem; }
+  .book-1 { height: 12rem; } .book-2 { height: 10.75rem; }
+  .book-3 { height: 11.5rem; } .book-4 { height: 9rem; }
   .contact-actions { align-items: flex-start; flex-direction: column; }
 }
 

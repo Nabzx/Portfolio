@@ -336,23 +336,35 @@ if (reducedMotion) {
     );
   });
 
-  /* model card: bio fades, rows cascade */
-  gsap.fromTo('.modelcard-bio',
+  /* off duty: bio fades, processes cascade, books land on the shelf */
+  gsap.fromTo('.offduty-bio',
     { y: 26, opacity: 0 },
     {
       y: 0, opacity: 1, duration: 0.9, ease: 'power3.out',
-      scrollTrigger: { trigger: '.modelcard', start: 'top 78%' },
+      scrollTrigger: { trigger: '.offduty', start: 'top 78%' },
     }
   );
-  gsap.fromTo('.mc-row',
-    { y: 22, opacity: 0 },
+  gsap.fromTo('.proc-row',
+    { x: -22, opacity: 0 },
+    {
+      x: 0,
+      opacity: 1,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '.proc-list', start: 'top 84%' },
+    }
+  );
+  gsap.fromTo('.book',
+    { y: 90, opacity: 0 },
     {
       y: 0,
       opacity: 1,
-      duration: 0.7,
-      stagger: 0.09,
-      ease: 'power3.out',
-      scrollTrigger: { trigger: '.modelcard-table', start: 'top 80%' },
+      duration: 0.85,
+      stagger: 0.12,
+      ease: 'back.out(1.4)',
+      clearProps: 'transform',
+      scrollTrigger: { trigger: '.bookshelf', start: 'top 82%' },
     }
   );
 
