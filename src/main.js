@@ -364,10 +364,10 @@ if (reducedMotion) {
       y: 0,
       opacity: 1,
       duration: 0.85,
-      stagger: 0.09,
+      stagger: 0.04,
       ease: 'back.out(1.4)',
       clearProps: 'transform',
-      scrollTrigger: { trigger: '.offduty-shelf', start: 'top 80%' },
+      scrollTrigger: { trigger: '.library', start: 'top 80%' },
     }
   );
 
