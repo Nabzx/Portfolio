@@ -347,15 +347,15 @@ if (reducedMotion) {
       scrollTrigger: { trigger: '.offduty', start: 'top 78%' },
     }
   );
-  gsap.fromTo('.proc-row',
-    { x: -22, opacity: 0 },
+  gsap.fromTo('.pursuits li',
+    { y: 18, opacity: 0 },
     {
-      x: 0,
+      y: 0,
       opacity: 1,
-      duration: 0.6,
-      stagger: 0.1,
+      duration: 0.7,
+      stagger: 0.07,
       ease: 'power3.out',
-      scrollTrigger: { trigger: '.proc-list', start: 'top 84%' },
+      scrollTrigger: { trigger: '.pursuits', start: 'top 84%' },
     }
   );
   gsap.fromTo('.book',
@@ -364,10 +364,10 @@ if (reducedMotion) {
       y: 0,
       opacity: 1,
       duration: 0.85,
-      stagger: 0.12,
+      stagger: 0.09,
       ease: 'back.out(1.4)',
       clearProps: 'transform',
-      scrollTrigger: { trigger: '.bookshelf', start: 'top 82%' },
+      scrollTrigger: { trigger: '.offduty-shelf', start: 'top 80%' },
     }
   );
 
