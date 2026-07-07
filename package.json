@@ -1,17 +1,18 @@
 {
-  "name": "nabil-shah-portfolio",
-  "type": "module",
-  "version": "1.0.0",
+  "name": "nabil-portfolio-v2",
   "private": true,
+  "version": "2.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.11"
   },
   "dependencies": {
-    "@fontsource/ibm-plex-mono": "^5.2.5",
-    "@fontsource/instrument-sans": "^5.2.5",
-    "@fontsource/shippori-mincho": "^5.2.5",
-    "astro": "^5.7.0"
+    "gsap": "^3.12.5",
+    "three": "^0.166.1"
   }
 }

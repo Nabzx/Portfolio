@@ -1,35 +1,40 @@
-# Nabil Shah — Portfolio
+# Nabil Shah — Portfolio v3 · "Best checkpoint"
 
-A monochrome, sumi-e-inspired portfolio built with [Astro](https://astro.build). No frameworks, no accent colours — sumi ink on washi paper, with a live multi-agent ink simulation in the hero.
+A single-page portfolio styled as a living research paper in a Claude Code
+palette: warm terminal black, terracotta crail (#D97757), ivory text and the
+✳ glyph. The three.js hero converges 12,000 particles from random noise into
+a loss landscape — warm-black valleys, terracotta slopes, ivory peaks — while
+a HUD ticks down to "best checkpoint saved". Motto: becoming the best version
+of myself.
 
-## Commands
+## Run
 
 ```bash
-npm install     # once
-npm run dev     # dev server at http://localhost:4321
-npm run build   # static build into dist/
-npm run preview # serve the production build locally
+npm install
+npm run dev      # http://localhost:5180
+npm run build    # outputs to dist/
 ```
 
-Deploy `dist/` to any static host (Netlify, Vercel, Cloudflare Pages, GitHub Pages).
+## Stack
 
-## Swapping in your real portrait
+- Vite + vanilla JS
+- three.js — hero particle field (custom shaders, `src/hero.js`)
+- GSAP + ScrollTrigger — intro timeline, typed section labels, per-section
+  scroll animations, magnetic buttons (`src/main.js`)
+- Custom terminal-caret cursor, desktop only (`src/cursor.js`)
+- Generative SVG/CSS "paper figures" (`src/figures.js`)
 
-The hero portrait is `public/portrait.svg` (currently an ink-wash placeholder).
+## Content to personalise
 
-1. Drop your manga-style portrait into `public/` (e.g. `portrait.png` — ideally on a transparent or near-white background, roughly 4:5 portrait ratio).
-2. Update the one reference in `src/pages/index.astro`: change `src="/portrait.svg"` to `src="/portrait.png"`.
-3. The image uses `mix-blend-mode: multiply`, so whites melt into the paper and the figure integrates with the ink field automatically. If your portrait has a solid background you don't want, remove the blend rule in the `.hero-portrait img` style block.
+Copy that was written as editable placeholder — adjust to taste in `index.html`:
 
-## Editing content
+- Project descriptions in §1 (Minexx details, eval harness, dissertation topic)
+- §2 research/writing entries (representative titles — replace with real ones)
+- GitHub / LinkedIn / X links in the contact section (currently `href="#"`)
 
-All copy lives in two places:
+## Accessibility & performance
 
-- **`src/pages/index.astro`** — hero, about, featured projects, the additional-projects grid (`additional` array — add an object to add a card), experience timeline (`timeline` array), research statement, skills, contact.
-- **`src/pages/projects/*.astro`** — the three featured project pages. Copy one to add a fourth; each page sets its own `next` link to chain them.
-
-Shared design tokens (colours, type scale, spacing) are in `src/styles/global.css`.
-
-## The hero animation
-
-`src/components/InkAgents.astro` renders simple agents that wander, then gradually align into flowing streams — emergence, drawn in ink. It pauses off-screen and when the tab is hidden, and renders a static composition for users with reduced motion enabled.
+- `prefers-reduced-motion` skips all animation and shows the converged state
+- Canvas pauses when off-screen or the tab is hidden; DPR capped at 1.75
+- Particle count drops on small/touch screens
+- Keyboard focus rings, skip link, semantic landmarks throughout
