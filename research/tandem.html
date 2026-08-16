@@ -20,49 +20,92 @@
   </header>
 
   <main class="page-main">
-    <p class="page-eyebrow mono">ongoing · scalable oversight · draft notes</p>
+    <p class="page-eyebrow mono">ongoing · scalable oversight · written up as I go</p>
     <h1 class="page-title">TandemRLVR — training reasoning agents to remain legible to weaker overseers</h1>
     <p class="page-lead">
-      Stronger models shouldn't just be right — their reasoning should be checkable by something
-      weaker than they are. TandemRLVR asks whether reasoning agents can be trained and evaluated
-      not only for final-answer correctness, but for producing intermediate reasoning a weaker
-      overseer can inspect, continue, and verify.
+      The question I keep coming back to: if a model is smarter than the person checking it, what
+      exactly is that person checking? TandemRLVR is my attempt to turn that worry into something
+      I can actually measure.
     </p>
 
     <div class="prose">
-      <h2>the core loop</h2>
+      <h2>where this came from</h2>
+      <p>
+        I kept reading about scalable oversight and feeling like the problem was being described
+        rather than tested. Everyone agrees that as models get stronger, checking their work gets
+        harder. Fewer people seem to be measuring it. So I built a setup where the checking is the
+        whole experiment.
+      </p>
+      <p>
+        The trick I landed on is to stop using a human as the overseer and use a
+        <strong>deliberately weaker model</strong> instead. That gives me something I can run
+        thousands of times without needing thousands of people.
+      </p>
+
+      <h2>the loop</h2>
       <div class="flow">task → <b>senior reasoning</b> → junior completion → <b>verifier</b> → metrics</div>
       <p>
-        A senior agent reasons partway through a task, then hands off. A junior agent —
-        deliberately weaker — must pick up the trace and finish. A verifier scores the outcome.
-        If the senior's reasoning is legible, the junior succeeds more often: legibility stops
-        being an aesthetic and becomes a <strong>measurable, trainable quantity</strong>.
+        A strong "senior" model reasons partway through a problem and hands over. A weaker "junior"
+        model has to pick up that trace and finish the job. A programmatic verifier then checks the
+        final answer, so correctness is never a matter of opinion.
+      </p>
+      <p>
+        The clever bit — and honestly the bit I'm most pleased with — is what this setup rules out.
+        If the senior just blurts the answer, the junior succeeds but nothing has been demonstrated.
+        So I score for <em>leakage</em> as well as success. The senior has to be genuinely helpful
+        without giving the game away, which is much closer to what good explanation actually is.
       </p>
 
-      <h2>staging</h2>
+      <h2>what I'm measuring</h2>
+      <p>Rather than one number, the process reward is a weighted blend:</p>
       <ul>
-        <li>Stages 1–2 — heuristic placeholder agents establish the harness, with fully deterministic baselines.</li>
-        <li>Stage 3 — real local LLM agents drop in; the heuristic agents stay on as controls.</li>
+        <li><strong>Legibility</strong> (0.30) — can the trace be followed at all?</li>
+        <li><strong>Leakage</strong> (0.25) — did the senior sneak the answer through?</li>
+        <li><strong>Relevance</strong> (0.25) — is the reasoning about this problem, or generic waffle?</li>
+        <li><strong>Usefulness</strong> (0.20) — did it actually help the junior get there?</li>
+      </ul>
+      <p>
+        Tasks span arithmetic, logic, list transformation and code tracing — deliberately boring
+        domains, because I want the reasoning to be the variable, not the subject knowledge.
+      </p>
+
+      <h2>how it's built</h2>
+      <ul>
+        <li>Stages 1–2 — deterministic task generation and the evaluation scaffolding, with heuristic agents as fixed baselines.</li>
+        <li>Stage 3 — real local LLM agents via Ollama, with the heuristics kept as controls so I can tell model gains from harness noise.</li>
+        <li>Stage 4 — the process-reward metrics above.</li>
+        <li>Stage 5 — generalisation splits: in-distribution, out-of-distribution, and deliberately stress-shifted.</li>
+        <li>Stage 6 — a bandit optimising over <em>handoff prompt strategies</em> rather than model weights, which keeps the whole thing runnable on my own machine.</li>
+        <li>Stage 7 — report and figure generation, so every claim traces back to a run.</li>
       </ul>
 
-      <h2>why it matters</h2>
+      <h2>what's actually happened so far</h2>
       <p>
-        This is a scalable-oversight question. As models outgrow their overseers, final-answer
-        correctness stops being auditable on its own. Reasoning that survives a weaker reader is
-        reasoning you can actually trust — and RLVR-style training signals can select for it.
+        Stage 6 proved the optimisation loop works — it does find better handoff strategies, and the
+        in-distribution and out-of-distribution numbers improve. Then it falls over under stress
+        shifts, which was the genuinely interesting result. A strategy that makes reasoning more
+        legible on familiar problems doesn't necessarily hold when the problem shape changes.
+        Legibility looks less like a property you train in once and more like something that has to
+        survive distribution shift, same as everything else.
+      </p>
+      <p>
+        I want to be straight about the limits: these are preliminary numbers, run on local models,
+        and they need proper multi-seed validation before I'd defend them anywhere. Single runs
+        are a hypothesis, not a finding. That's the next job.
       </p>
 
-      <h2>engineering discipline</h2>
+      <h2>where I'd take it</h2>
       <p>
-        Built as clean RL research infrastructure: modular agents, reproducible runs, disciplined
-        evaluation, and experiment outputs you can diff. Developed toward Anthropic's
-        Reinforcement Learning Fellows programme.
+        More seeds and error bars first, then harder task families, then the version I really want —
+        using the process reward as an actual training signal rather than just a measurement. It's
+        also the work I'd most like to do somewhere with people who've thought about oversight for
+        longer than I have, which is partly why I'm building it in the open.
       </p>
     </div>
 
     <footer class="page-footer mono">
       <a class="text-link" href="/#research">← back to research</a>
-      <span><span class="star">✳</span> code available on request — <a class="text-link" href="mailto:nabilshahx@gmail.com?subject=TandemRLVR">ask</a></span>
+      <span><span class="star">✳</span> code on <a class="text-link" href="https://github.com/Nabzx/Tandem" target="_blank" rel="noopener">github</a></span>
     </footer>
   </main>
 </body>

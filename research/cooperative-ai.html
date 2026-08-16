@@ -20,43 +20,79 @@
   </header>
 
   <main class="page-main">
-    <p class="page-eyebrow mono">dissertation · 2026 · workshop submission in preparation</p>
-    <h1 class="page-title">Cooperative AI — emergence in multi-agent reinforcement learning</h1>
+    <p class="page-eyebrow mono">dissertation · 2026 · still being updated</p>
+    <h1 class="page-title">Cooperative capabilities of multi-agent AI systems</h1>
     <p class="page-lead">
-      How do communication constraints and reward design shape cooperation between learning
-      agents? My dissertation studies emergent coordination in MARL systems — and finds that the
-      obvious levers often pull the wrong way.
+      I wanted to know whether cooperation has to be designed in, or whether it turns up on its own
+      if you get the incentives right. So I built a small brutal world, dropped some agents in it,
+      and paid them three different ways.
     </p>
 
     <div class="prose">
-      <h2>setup</h2>
+      <h2>the setup</h2>
       <p>
-        PPO agents implemented in <strong>PyTorch</strong> inside <strong>PettingZoo</strong>
-        cooperative environments. Two axes are varied systematically: the communication bandwidth
-        available between agents, and the reward structure — from fully selfish to fully shared.
-        Coordination is measured, not eyeballed.
+        It's a gridworld with scarce resources and agents that can see and affect each other — I
+        think of it as a Hunger Games arena, which is roughly how it behaves. Agents are trained
+        with <strong>PPO</strong>, there's communication logic between them, and each configuration
+        gets <strong>50,000 episodes</strong> so I'm looking at settled behaviour rather than early
+        noise.
+      </p>
+      <p>The only thing I changed between runs was how agents get paid:</p>
+      <ul>
+        <li><strong>Selfish</strong> — you're rewarded for what you personally collect.</li>
+        <li><strong>Cooperative</strong> — everyone shares in the group's total.</li>
+        <li><strong>Mixed</strong> — a blend of the two.</li>
+      </ul>
+
+      <h2>what I expected</h2>
+      <p>
+        Honestly? I expected the cooperative reward to win. It's the intuitive answer — pay the
+        group for group success and you'll get group behaviour. That's the assumption I went in
+        with, and it's the assumption the experiment spent 50,000 episodes dismantling.
       </p>
 
-      <h2>the counterintuitive result</h2>
+      <h2>what actually happened</h2>
       <p>
-        <strong>Selfish incentives produced the most cooperation.</strong> Shared rewards sound
-        cooperative, but they blur credit assignment: no agent can tell which of its actions
-        earned the reward, so the gradient signal washes out. Selfish rewards keep the signal
-        sharp — and cooperation emerges anyway, because it is <em>instrumentally useful</em>
-        rather than imposed.
+        The <strong>selfish</strong> reward produced the most cooperative behaviour. Not the shared
+        one. That result annoyed me for about a week before it started making sense.
+      </p>
+      <p>
+        My read is that it's a <em>credit assignment</em> problem. Under a shared reward, an agent
+        that does something genuinely clever gets the same payoff as one that wandered into a wall,
+        because the reward is pooled. The learning signal gets smeared across everyone and the
+        gradient can't tell effort from luck. Under a selfish reward the signal stays sharp — each
+        agent knows exactly which of its own actions paid off — and cooperation still emerges,
+        because in that environment helping others happens to be the profitable strategy.
+      </p>
+      <p>
+        So cooperation appears when it's <em>instrumentally useful</em> and learnable, not when
+        it's morally encouraged by the reward function. Which is a slightly uncomfortable lesson,
+        and I think a useful one for anyone designing multi-agent incentives.
       </p>
 
-      <h2>where it goes</h2>
+      <h2>what I'd push back on myself</h2>
       <p>
-        A workshop submission is in preparation. The thread continues in my ongoing work on
-        <a class="text-link" href="/research/neuroplastic.html">neuroplastic collective intelligence</a> —
-        the same question of emergence, with the communication topology itself made plastic.
+        This is one environment. Gridworlds are famously happy to hand you results that don't
+        survive contact with anything richer, and "cooperation" here means a specific measured
+        behaviour, not the full human concept. I'd want more environments and more seeds before
+        claiming anything general — and the repo is still moving because I keep going back to it.
+      </p>
+
+      <h2>where it goes next</h2>
+      <p>
+        This is the piece of work that set my direction. It's why I care about
+        <a class="text-link" href="/research/tandem.html">legible reasoning</a> — that's a credit
+        assignment problem too, just with explanations instead of rewards — and it runs directly
+        into my ongoing work on
+        <a class="text-link" href="/research/neuroplastic.html">neuroplastic collective
+        intelligence</a>, where the communication structure itself gets to change. A workshop
+        submission is in preparation.
       </p>
     </div>
 
     <footer class="page-footer mono">
       <a class="text-link" href="/#research">← back to research</a>
-      <span><span class="star">✳</span> full dissertation on request — <a class="text-link" href="mailto:nabilshahx@gmail.com?subject=Dissertation">ask</a></span>
+      <span><span class="star">✳</span> code on <a class="text-link" href="https://github.com/Nabzx/Dissertation" target="_blank" rel="noopener">github</a></span>
     </footer>
   </main>
 </body>

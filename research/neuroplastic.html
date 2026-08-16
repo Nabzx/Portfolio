@@ -23,45 +23,55 @@
     <p class="page-eyebrow mono">ongoing · collective intelligence</p>
     <h1 class="page-title">Neuroplastic collective intelligence</h1>
     <p class="page-lead">
-      Can communication mechanisms borrowed from computational neuroscience improve how
-      collectives of agents coordinate — and push them toward functional specialisation
-      nobody designed in?
+      My dissertation fixed who could talk to whom and varied the rewards. This one does the
+      opposite: let the communication structure itself change, and see what the group becomes.
     </p>
 
     <div class="prose">
-      <h2>approach</h2>
+      <h2>the question</h2>
       <p>
-        A multi-agent framework with <strong>adaptive graph-based communication</strong>: who
-        talks to whom is not fixed, but learned. Connection strengths update with
-        <strong>Hebbian-inspired plasticity</strong> — channels that carry useful signal
-        strengthen, idle ones decay — so the interaction topology reshapes itself during
-        cooperative learning.
+        In most multi-agent setups the communication topology is a design decision — you wire the
+        agents up at the start and that's that. Brains don't work like that. Connections that carry
+        useful signal get stronger, ones that don't fade out. So: if you let a collective of agents
+        rewire itself the same way, does it organise into something better than what you'd have
+        designed by hand?
       </p>
 
-      <h2>measurement</h2>
-      <p>
-        Emergence claims are cheap, so the evaluation isn't: coordination and specialisation are
-        quantified with <em>graph-theoretic and information-theoretic measures</em> across
-        cooperative benchmarks, against fixed-topology baselines.
-      </p>
-
-      <h2>stack</h2>
+      <h2>how it works</h2>
       <ul>
-        <li>Python · PyTorch · PettingZoo</li>
-        <li>NetworkX for topology analysis · NumPy</li>
+        <li><strong>Adaptive graph communication</strong> — the network of who-talks-to-whom is learned, not fixed.</li>
+        <li><strong>Hebbian-inspired plasticity</strong> — channels that carry useful information strengthen; idle ones decay. Roughly, fire together, wire together.</li>
+        <li><strong>Dynamic topologies</strong> — the interaction structure is allowed to shift mid-training rather than only between runs.</li>
       </ul>
-
-      <h2>status</h2>
       <p>
-        Ongoing — the long-term thread connecting my
-        <a class="text-link" href="/research/cooperative-ai.html">dissertation</a> to doctoral
-        ambitions: understanding how intelligence emerges from interaction.
+        Built on Python, PyTorch and PettingZoo, with NetworkX doing the topology analysis.
+      </p>
+
+      <h2>measuring "emergence" without hand-waving</h2>
+      <p>
+        This is the part I'm most careful about. Emergence is an easy word to throw around and a
+        hard one to evidence — you can always squint at a plot and see structure. So specialisation
+        and coordination get quantified with <strong>graph-theoretic and information-theoretic
+        measures</strong>, and everything is compared against fixed-topology baselines. If the
+        plastic version isn't beating a sensible fixed graph, it isn't doing anything, however good
+        the animation looks.
+      </p>
+
+      <h2>where it's at</h2>
+      <p>
+        Genuinely ongoing — this is the one I'm actively building rather than writing up. It's the
+        long thread connecting my
+        <a class="text-link" href="/research/cooperative-ai.html">dissertation</a> to what I want
+        to do next: understanding how intelligence emerges from interaction, and eventually doing
+        that as doctoral research. Different angle from
+        <a class="text-link" href="/research/tandem.html">TandemRLVR</a>, same underlying interest
+        in what happens between agents rather than inside one.
       </p>
     </div>
 
     <footer class="page-footer mono">
       <a class="text-link" href="/#research">← back to research</a>
-      <span><span class="star">✳</span> repo on <a class="text-link" href="https://github.com/Nabzx" target="_blank" rel="noopener">github</a></span>
+      <span><span class="star">✳</span> code on <a class="text-link" href="https://github.com/Nabzx/Neuroplastic" target="_blank" rel="noopener">github</a></span>
     </footer>
   </main>
 </body>
