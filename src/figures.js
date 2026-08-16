@@ -313,9 +313,148 @@ function buildTranscript(host) {
   host.prepend(svg);
 }
 
+/* fig 1.1 — the approval gate: the model proposes on the left, a human
+   decides in the middle, and only then does anything execute */
+function buildPipeline(host) {
+  const W = 320, H = 190;
+  const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, class: 'fig-svg' });
+  const ROW = 74;
+
+  // proposal stages — muted, because the model only ever suggests
+  const stages = [14, 62, 110];
+  stages.forEach((x, i) => {
+    svg.appendChild(svgEl('rect', {
+      x, y: ROW - 13, width: 36, height: 26, rx: 3,
+      fill: ramp(0.18 + i * 0.06), stroke: CREAM + '0.18)', 'stroke-width': 1,
+    }));
+    svg.appendChild(svgEl('path', {
+      d: `M${x + 38},${ROW} L${x + 46},${ROW} M${x + 42},${ROW - 3.5} L${x + 46},${ROW} L${x + 42},${ROW + 3.5}`,
+      fill: 'none', stroke: CREAM + '0.3)', 'stroke-width': 1.2,
+      'stroke-linecap': 'round', 'stroke-linejoin': 'round',
+    }));
+  });
+
+  // the gate itself
+  svg.appendChild(svgEl('line', {
+    x1: 178, y1: 24, x2: 178, y2: 124,
+    stroke: CRAIL, 'stroke-width': 1.2, 'stroke-dasharray': '4 4', opacity: 0.6,
+  }));
+  svg.appendChild(svgEl('rect', {
+    x: 162, y: ROW - 17, width: 32, height: 34, rx: 4,
+    fill: 'none', stroke: CRAIL, 'stroke-width': 1.6,
+  }));
+  // a tick: the supervisor's decision
+  svg.appendChild(svgEl('path', {
+    d: `M170,${ROW} L176,${ROW + 6} L187,${ROW - 7}`,
+    fill: 'none', stroke: CRAIL, 'stroke-width': 2,
+    'stroke-linecap': 'round', 'stroke-linejoin': 'round',
+  }));
+  svg.appendChild(svgEl('path', {
+    d: `M196,${ROW} L216,${ROW} M210,${ROW - 4} L216,${ROW} L210,${ROW + 4}`,
+    fill: 'none', stroke: CRAIL, 'stroke-width': 1.4,
+    'stroke-linecap': 'round', 'stroke-linejoin': 'round',
+  }));
+
+  // the one consequential action, executed exactly once
+  svg.appendChild(svgEl('rect', {
+    x: 224, y: ROW - 15, width: 44, height: 30, rx: 3, fill: '#f4ede0',
+  }));
+  svg.appendChild(svgEl('circle', { cx: 286, cy: ROW, r: 4.5, fill: KRAFT }));
+
+  // hash-chained audit trail along the bottom
+  for (let i = 0; i < 9; i++) {
+    const x = 24 + i * 30;
+    svg.appendChild(svgEl('rect', {
+      x, y: 148, width: 16, height: 14, rx: 2,
+      fill: i === 5 ? CRAIL : CREAM + '0.1)',
+      stroke: CREAM + '0.18)', 'stroke-width': 1,
+    }));
+    if (i < 8) {
+      svg.appendChild(svgEl('line', {
+        x1: x + 16, y1: 155, x2: x + 30, y2: 155,
+        stroke: CREAM + '0.22)', 'stroke-width': 1,
+      }));
+    }
+  }
+
+  host.prepend(svg);
+}
+
+/* fig 1.2 — stock running down, and the forecast that calls the
+   stockout before it lands */
+function buildForecast(host) {
+  const W = 320, H = 190, ZERO = 150, SPLIT = 176;
+  const rand = mulberry32(369);
+  const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, class: 'fig-svg' });
+
+  svg.appendChild(svgEl('line', {
+    x1: 14, y1: ZERO, x2: W - 14, y2: ZERO,
+    stroke: CREAM + '0.22)', 'stroke-width': 1, 'stroke-dasharray': '3 4',
+  }));
+
+  // observed sell-through
+  let y = 32;
+  let d = '';
+  const pts = [];
+  for (let x = 14; x <= SPLIT; x += 18) {
+    y += 4 + rand() * 6;
+    pts.push([x, y]);
+    d += `${d ? 'L' : 'M'}${x},${y.toFixed(1)}`;
+  }
+  svg.appendChild(svgEl('path', {
+    d, fill: 'none', stroke: CREAM + '0.75)', 'stroke-width': 2,
+    'stroke-linecap': 'round', 'stroke-linejoin': 'round',
+  }));
+  pts.forEach(([px, py]) => {
+    svg.appendChild(svgEl('circle', { cx: px, cy: py, r: 2, fill: CREAM + '0.75)' }));
+  });
+
+  // forecast cone + central estimate, landing on zero inside the frame
+  const hitX = 274;
+  const steps = 7;
+  const dx = (hitX - SPLIT) / steps;
+  const slope = (ZERO - y) / steps;
+  const upper = [], lower = [];
+  let fd = `M${SPLIT},${y.toFixed(1)}`;
+  for (let i = 1; i <= steps; i++) {
+    const fx = SPLIT + i * dx;
+    const fy = y + slope * i;
+    const spread = 2 + i * 2.2;
+    fd += `L${fx.toFixed(1)},${fy.toFixed(1)}`;
+    upper.push(`${fx.toFixed(1)},${Math.max(18, fy - spread).toFixed(1)}`);
+    lower.push(`${fx.toFixed(1)},${Math.min(178, fy + spread).toFixed(1)}`);
+  }
+  svg.appendChild(svgEl('polygon', {
+    points: `${SPLIT},${y.toFixed(1)} ${upper.join(' ')} ${lower.reverse().join(' ')}`,
+    fill: CRAIL, opacity: 0.14,
+  }));
+  svg.appendChild(svgEl('path', {
+    d: fd, fill: 'none', stroke: CRAIL, 'stroke-width': 2,
+    'stroke-dasharray': '5 4', 'stroke-linecap': 'round',
+  }));
+
+  // where it hits zero — the stockout
+  svg.appendChild(svgEl('line', {
+    x1: hitX, y1: 30, x2: hitX, y2: ZERO,
+    stroke: KRAFT, 'stroke-width': 1, 'stroke-dasharray': '2 4', opacity: 0.7,
+  }));
+  svg.appendChild(svgEl('circle', { cx: hitX, cy: ZERO, r: 8, fill: 'none', stroke: CRAIL, 'stroke-width': 1, opacity: 0.5 }));
+  svg.appendChild(svgEl('circle', { cx: hitX, cy: ZERO, r: 3.6, fill: CRAIL }));
+
+  // split marker: today
+  svg.appendChild(svgEl('line', {
+    x1: SPLIT, y1: 24, x2: SPLIT, y2: ZERO + 6,
+    stroke: CREAM + '0.2)', 'stroke-width': 1,
+  }));
+
+  host.prepend(svg);
+}
+
 export function buildFigures() {
   document.querySelectorAll('[data-figure]').forEach((host) => {
     switch (host.dataset.figure) {
+      case 'pipeline': buildPipeline(host); break;
+      case 'forecast': buildForecast(host); break;
       case 'bidding': buildBidding(host); break;
       case 'chessboard': buildChessboard(host); break;
       case 'aidmap': buildAidMap(host); break;

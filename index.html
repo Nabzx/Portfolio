@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nabil Shah — AI Researcher &amp; Engineer</title>
-  <meta name="description" content="Nabil Shah — AI researcher and engineer in London. Multi-agent RL, adaptive computation, production NLP. Founder of a student startup accelerator. Becoming the best version of myself." />
-  <meta property="og:title" content="Nabil Shah — AI Researcher & Engineer" />
-  <meta property="og:description" content="Becoming the best version of myself. Multi-agent RL, adaptive computation and production NLP — London, UK." />
+  <title>Nabil Shah — AI Engineer &amp; Researcher</title>
+  <meta name="description" content="Nabil Shah — AI engineer and researcher in London. Applied AI systems, agentic workflows, multi-agent RL. Founder of a student startup accelerator. Becoming the best version of myself." />
+  <meta property="og:title" content="Nabil Shah — AI Engineer & Researcher" />
+  <meta property="og:description" content="Becoming the best version of myself. Applied AI systems, agentic workflows and multi-agent RL — London, UK." />
   <meta name="theme-color" content="#1f1e1b" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,13 +38,13 @@
       <div class="hero-veil" aria-hidden="true"></div>
 
       <div class="hero-inner">
-        <p class="hero-eyebrow mono reveal-load"><span class="star" aria-hidden="true">✳</span> AI Researcher &amp; Engineer — London, UK</p>
+        <p class="hero-eyebrow mono reveal-load"><span class="star" aria-hidden="true">✳</span> AI Engineer &amp; Researcher — London, UK</p>
         <h1 class="hero-title">
           <span class="line"><span class="line-inner">Nabil</span></span>
           <span class="line"><span class="line-inner">Shah</span></span>
         </h1>
         <p class="hero-motto reveal-load">“Becoming the <em>best version</em> of myself.”</p>
-        <p class="hero-sub reveal-load">AI research first — startups, philosophy and international debate close behind.</p>
+        <p class="hero-sub reveal-load">I build applied AI systems that survive production — and research the questions underneath them.</p>
         <div class="hero-cta reveal-load">
           <a class="btn btn-solid" data-magnetic href="mailto:nabilshahx@gmail.com?subject=Hiring%20conversation">Email me</a>
           <a class="btn btn-ghost" data-magnetic href="#work">Selected work<span aria-hidden="true">&nbsp;↓</span></a>
@@ -66,11 +66,11 @@
         <span class="section-rule" aria-hidden="true"></span>
       </div>
       <p class="abstract-text">
-        I'm trying to become <em>the best version of myself</em>. For me that starts with
-        <strong>AI research</strong> — understanding how intelligence emerges, and building systems
-        worth trusting. Along the way I've shipped production ML at <strong>Minexx</strong>, founded
-        my university's first startup accelerator, and debated internationally. The standard I hold
-        myself to is simple: keep learning, keep building, keep improving.
+        I'm trying to become <em>the best version of myself</em>. Mostly that means building
+        <strong>applied AI systems</strong> — the unglamorous parts included: approval gates, audit
+        trails, evals that actually fail. I care about the bit where a model meets real users and
+        real money. The <strong>research</strong> runs alongside it, because the questions worth
+        engineering around are the ones nobody has answered yet.
       </p>
     </section>
 
@@ -79,13 +79,77 @@
       <div class="section-head">
         <h2 class="section-label mono" id="work-label" aria-label="Section 1 — selected work"><span class="star" aria-hidden="true">✳</span> <span class="label-text">01 — selected work</span></h2>
         <span class="section-rule" aria-hidden="true"></span>
-        <p class="section-note mono">six figures · click a row to expand</p>
+        <p class="section-note mono">eight figures · click a row to expand</p>
       </div>
 
       <article class="work-row is-open" data-accordion>
         <h3 class="work-heading">
-          <button class="work-head" type="button" aria-expanded="true" aria-controls="panel-bidnet">
+          <button class="work-head" type="button" aria-expanded="true" aria-controls="panel-agentops">
             <span class="work-index mono" aria-hidden="true">P.01</span>
+            <span class="work-title">AgentOps — approval gates for AI that moves money</span>
+            <span class="work-year mono">2026</span>
+            <span class="work-toggle" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <div class="work-panel" id="panel-agentops">
+          <div class="work-panel-inner">
+            <div class="work-figure" data-figure="pipeline" role="img" aria-label="Figure 1.1: a support ticket pipeline stopping at a human approval gate before execution">
+              <p class="fig-caption mono" aria-hidden="true">fig. 1.1 — nothing gets past the gate unapproved</p>
+            </div>
+            <div class="work-body">
+              <p class="work-desc">
+                An AI support-ops platform where the model only ever <em>proposes</em>. Deterministic rules
+                decide, a supervisor approves a hashed snapshot, and a durable outbox worker executes the
+                refund exactly once — every step traced and audited.
+              </p>
+              <ul class="work-stats" aria-label="Key results">
+                <li class="stat"><span class="stat-value" data-count="440">440</span><span class="stat-label mono">automated tests, fully offline</span></li>
+                <li class="stat"><span class="stat-value" data-count="9">9</span><span class="stat-label mono">hard eval gates, all at zero</span></li>
+                <li class="stat"><span class="stat-value">once</span><span class="stat-label mono">exactly — outbox + audit chain</span></li>
+              </ul>
+              <ul class="work-tags mono" aria-label="Technologies"><li>FastAPI</li><li>PostgreSQL + pgvector</li><li>Next.js 15</li><li>Evals</li></ul>
+              <a class="text-link mono work-link" href="https://github.com/Nabzx/agentops" target="_blank" rel="noopener">view on github ↗</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-row" data-accordion>
+        <h3 class="work-heading">
+          <button class="work-head" type="button" aria-expanded="false" aria-controls="panel-storesense">
+            <span class="work-index mono" aria-hidden="true">P.02</span>
+            <span class="work-title">StoreSense — the copilot behind noszn</span>
+            <span class="work-year mono">2026</span>
+            <span class="work-toggle" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <div class="work-panel" id="panel-storesense">
+          <div class="work-panel-inner">
+            <div class="work-figure" data-figure="forecast" role="img" aria-label="Figure 1.2: a demand forecast against actual sales with a stockout flagged ahead">
+              <p class="fig-caption mono" aria-hidden="true">fig. 1.2 — forecasting the stockout before it happens</p>
+            </div>
+            <div class="work-body">
+              <p class="work-desc">
+                A BI dashboard and AI copilot for <strong>noszn</strong>, a Shopify clothing brand: answers
+                grounded in the shop's own documents with citations, stockout forecasting, semantic product
+                search and review sentiment — all runnable on a local model.
+              </p>
+              <ul class="work-stats" aria-label="Key results">
+                <li class="stat"><span class="stat-value">36.9%</span><span class="stat-label mono">forecast error, hybrid model</span></li>
+                <li class="stat"><span class="stat-value">39.7%</span><span class="stat-label mono">moving-average baseline it beats</span></li>
+                <li class="stat"><span class="stat-value">cited</span><span class="stat-label mono">every copilot answer, to source</span></li>
+              </ul>
+              <ul class="work-tags mono" aria-label="Technologies"><li>FastAPI</li><li>Next.js</li><li>Ollama</li><li>AWS Lambda</li></ul>
+              <a class="text-link mono work-link" href="https://github.com/Nabzx/Ecommerce-AI-Copilot" target="_blank" rel="noopener">view on github ↗</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-row" data-accordion>
+        <h3 class="work-heading">
+          <button class="work-head" type="button" aria-expanded="false" aria-controls="panel-bidnet">
+            <span class="work-index mono" aria-hidden="true">P.03</span>
             <span class="work-title">BidNet — experts that bid for compute</span>
             <span class="work-year mono">2026</span>
             <span class="work-toggle" aria-hidden="true"></span>
@@ -93,8 +157,8 @@
         </h3>
         <div class="work-panel" id="panel-bidnet">
           <div class="work-panel-inner">
-            <div class="work-figure" data-figure="bidding" role="img" aria-label="Figure 1.1: samples bidding across to experts, winning routes highlighted">
-              <p class="fig-caption mono" aria-hidden="true">fig. 1.1 — six samples, five experts, one auction</p>
+            <div class="work-figure" data-figure="bidding" role="img" aria-label="Figure 1.3: samples bidding across to experts, winning routes highlighted">
+              <p class="fig-caption mono" aria-hidden="true">fig. 1.3 — six samples, five experts, one auction</p>
             </div>
             <div class="work-body">
               <p class="work-desc">
@@ -107,7 +171,38 @@
                 <li class="stat"><span class="stat-value" data-count="8" data-prefix="+" data-suffix="%">+8%</span><span class="stat-label mono">vs static top-k routing</span></li>
               </ul>
               <ul class="work-tags mono" aria-label="Technologies"><li>PyTorch</li><li>CIFAR-10</li><li>Lagrangian routing</li></ul>
-              <a class="text-link mono work-link" href="https://github.com/Nabzx" target="_blank" rel="noopener">view on github ↗</a>
+              <a class="text-link mono work-link" href="https://github.com/Nabzx/BidNet" target="_blank" rel="noopener">view on github ↗</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-row" data-accordion>
+        <h3 class="work-heading">
+          <button class="work-head" type="button" aria-expanded="false" aria-controls="panel-aid">
+            <span class="work-index mono" aria-hidden="true">P.04</span>
+            <span class="work-title">Aidway — privacy-first aid allocation</span>
+            <span class="work-year mono">1st place</span>
+            <span class="work-toggle" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <div class="work-panel" id="panel-aid">
+          <div class="work-panel-inner">
+            <div class="work-figure" data-figure="aidmap" role="img" aria-label="Figure 1.4: a map of Africa with camps and supply routes from a central hub">
+              <p class="fig-caption mono" aria-hidden="true">fig. 1.4 — camps mapped, aid routed</p>
+            </div>
+            <div class="work-body">
+              <p class="work-desc">
+                Streamlining charity delivery of sanitary products to humanitarian camps — a locally-hosted
+                LLM and a custom prediction model, so no beneficiary data ever leaves the organisation.
+              </p>
+              <ul class="work-stats" aria-label="Key results">
+                <li class="stat"><span class="stat-value">1st</span><span class="stat-label mono">IBM × Capital One hackathon</span></li>
+                <li class="stat"><span class="stat-value" data-count="100" data-suffix="%">100%</span><span class="stat-label mono">on-prem inference</span></li>
+                <li class="stat"><span class="stat-value">0</span><span class="stat-label mono">records exposed to third parties</span></li>
+              </ul>
+              <ul class="work-tags mono" aria-label="Technologies"><li>Local LLM</li><li>Forecasting</li><li>Privacy by design</li></ul>
+              <a class="text-link mono work-link" href="https://github.com/Nabzx/Aidway" target="_blank" rel="noopener">view on github ↗</a>
             </div>
           </div>
         </div>
@@ -116,16 +211,16 @@
       <article class="work-row" data-accordion>
         <h3 class="work-heading">
           <button class="work-head" type="button" aria-expanded="false" aria-controls="panel-fianchetto">
-            <span class="work-index mono" aria-hidden="true">P.02</span>
+            <span class="work-index mono" aria-hidden="true">P.05</span>
             <span class="work-title">FianchettoX — the explainable chess engine</span>
-            <span class="work-year mono">2025</span>
+            <span class="work-year mono">2026</span>
             <span class="work-toggle" aria-hidden="true"></span>
           </button>
         </h3>
         <div class="work-panel" id="panel-fianchetto">
           <div class="work-panel-inner">
-            <div class="work-figure" data-figure="chessboard" role="img" aria-label="Figure 1.2: a chessboard in a double-fianchetto position">
-              <p class="fig-caption mono" aria-hidden="true">fig. 1.2 — the double fianchetto, naturally</p>
+            <div class="work-figure" data-figure="chessboard" role="img" aria-label="Figure 1.5: a chessboard in a double-fianchetto position">
+              <p class="fig-caption mono" aria-hidden="true">fig. 1.5 — the double fianchetto, naturally</p>
             </div>
             <div class="work-body">
               <p class="work-desc">
@@ -138,38 +233,7 @@
                 <li class="stat"><span class="stat-value" data-count="2000" data-suffix="+">2,000+</span><span class="stat-label mono">lines of C++</span></li>
               </ul>
               <ul class="work-tags mono" aria-label="Technologies"><li>C++</li><li>ONNX</li><li>Docker</li><li>Next.js</li></ul>
-              <a class="text-link mono work-link" href="https://github.com/Nabzx" target="_blank" rel="noopener">view on github ↗</a>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="work-row" data-accordion>
-        <h3 class="work-heading">
-          <button class="work-head" type="button" aria-expanded="false" aria-controls="panel-aid">
-            <span class="work-index mono" aria-hidden="true">P.03</span>
-            <span class="work-title">Privacy-first aid allocation</span>
-            <span class="work-year mono">1st place</span>
-            <span class="work-toggle" aria-hidden="true"></span>
-          </button>
-        </h3>
-        <div class="work-panel" id="panel-aid">
-          <div class="work-panel-inner">
-            <div class="work-figure" data-figure="aidmap" role="img" aria-label="Figure 1.3: a map of Africa with camps and supply routes from a central hub">
-              <p class="fig-caption mono" aria-hidden="true">fig. 1.3 — camps mapped, aid routed</p>
-            </div>
-            <div class="work-body">
-              <p class="work-desc">
-                Aid distribution for humanitarian camps — a locally-hosted LLM and a custom prediction
-                model, so no beneficiary data ever leaves the organisation.
-              </p>
-              <ul class="work-stats" aria-label="Key results">
-                <li class="stat"><span class="stat-value">1st</span><span class="stat-label mono">IBM × Capital One hackathon</span></li>
-                <li class="stat"><span class="stat-value" data-count="100" data-suffix="%">100%</span><span class="stat-label mono">on-prem inference</span></li>
-                <li class="stat"><span class="stat-value">0</span><span class="stat-label mono">records exposed to third parties</span></li>
-              </ul>
-              <ul class="work-tags mono" aria-label="Technologies"><li>Local LLM</li><li>Forecasting</li><li>Privacy by design</li></ul>
-              <a class="text-link mono work-link" href="https://github.com/Nabzx" target="_blank" rel="noopener">view on github ↗</a>
+              <a class="text-link mono work-link" href="https://github.com/Nabzx/FianchettoX" target="_blank" rel="noopener">view on github ↗</a>
             </div>
           </div>
         </div>
@@ -178,7 +242,7 @@
       <article class="work-row" data-accordion>
         <h3 class="work-heading">
           <button class="work-head" type="button" aria-expanded="false" aria-controls="panel-trading">
-            <span class="work-index mono" aria-hidden="true">P.04</span>
+            <span class="work-index mono" aria-hidden="true">P.06</span>
             <span class="work-title">The winning trading strategy</span>
             <span class="work-year mono">1st place</span>
             <span class="work-toggle" aria-hidden="true"></span>
@@ -186,8 +250,8 @@
         </h3>
         <div class="work-panel" id="panel-trading">
           <div class="work-panel-inner">
-            <div class="work-figure" data-figure="candles" role="img" aria-label="Figure 1.4: a candlestick chart drifting upward from a dashed entry level">
-              <p class="fig-caption mono" aria-hidden="true">fig. 1.4 — one session, long the right side</p>
+            <div class="work-figure" data-figure="candles" role="img" aria-label="Figure 1.6: a candlestick chart drifting upward from a dashed entry level">
+              <p class="fig-caption mono" aria-hidden="true">fig. 1.6 — one session, long the right side</p>
             </div>
             <div class="work-body">
               <p class="work-desc">
@@ -199,7 +263,7 @@
                 <li class="stat"><span class="stat-value">live</span><span class="stat-label mono">signal → execution, end to end</span></li>
               </ul>
               <ul class="work-tags mono" aria-label="Technologies"><li>Quant strategy</li><li>Risk management</li><li>Python</li></ul>
-              <a class="text-link mono work-link" href="https://github.com/Nabzx" target="_blank" rel="noopener">view on github ↗</a>
+              <a class="text-link mono work-link" href="https://github.com/Nabzx/Algorithmic-Trading-Bot" target="_blank" rel="noopener">view on github ↗</a>
             </div>
           </div>
         </div>
@@ -208,7 +272,7 @@
       <article class="work-row" data-accordion>
         <h3 class="work-heading">
           <button class="work-head" type="button" aria-expanded="false" aria-controls="panel-icu">
-            <span class="work-index mono" aria-hidden="true">P.05</span>
+            <span class="work-index mono" aria-hidden="true">P.07</span>
             <span class="work-title">ICU risk, predicted early</span>
             <span class="work-year mono">2025</span>
             <span class="work-toggle" aria-hidden="true"></span>
@@ -216,8 +280,8 @@
         </h3>
         <div class="work-panel" id="panel-icu">
           <div class="work-panel-inner">
-            <div class="work-figure" data-figure="ecg" role="img" aria-label="Figure 1.5: an ECG trace with one anomalous beat flagged">
-              <p class="fig-caption mono" aria-hidden="true">fig. 1.5 — the beat that matters</p>
+            <div class="work-figure" data-figure="ecg" role="img" aria-label="Figure 1.7: an ECG trace with one anomalous beat flagged">
+              <p class="fig-caption mono" aria-hidden="true">fig. 1.7 — the beat that matters</p>
             </div>
             <div class="work-body">
               <p class="work-desc">
@@ -228,8 +292,8 @@
                 <li class="stat"><span class="stat-value">k-NN</span><span class="stat-label mono">over vector embeddings</span></li>
                 <li class="stat"><span class="stat-value">early</span><span class="stat-label mono">warning, before the monitor alarms</span></li>
               </ul>
-              <ul class="work-tags mono" aria-label="Technologies"><li>Scikit-learn</li><li>Embeddings</li><li>Healthcare</li></ul>
-              <a class="text-link mono work-link" href="https://github.com/Nabzx" target="_blank" rel="noopener">view on github ↗</a>
+              <ul class="work-tags mono" aria-label="Technologies"><li>BigQuery</li><li>Embeddings</li><li>Healthcare</li></ul>
+              <a class="text-link mono work-link" href="https://github.com/Nabzx/ICU-Risk-Prediction" target="_blank" rel="noopener">view on github ↗</a>
             </div>
           </div>
         </div>
@@ -238,16 +302,16 @@
       <article class="work-row" data-accordion>
         <h3 class="work-heading">
           <button class="work-head" type="button" aria-expanded="false" aria-controls="panel-transcribe">
-            <span class="work-index mono" aria-hidden="true">P.06</span>
-            <span class="work-title">Lectures, structured live</span>
+            <span class="work-index mono" aria-hidden="true">P.08</span>
+            <span class="work-title">EchoNotes — lectures, structured live</span>
             <span class="work-year mono">2025</span>
             <span class="work-toggle" aria-hidden="true"></span>
           </button>
         </h3>
         <div class="work-panel" id="panel-transcribe">
           <div class="work-panel-inner">
-            <div class="work-figure" data-figure="transcript" role="img" aria-label="Figure 1.6: an audio waveform transformed into a structured outline">
-              <p class="fig-caption mono" aria-hidden="true">fig. 1.6 — speech in, structure out</p>
+            <div class="work-figure" data-figure="transcript" role="img" aria-label="Figure 1.8: an audio waveform transformed into a structured outline">
+              <p class="fig-caption mono" aria-hidden="true">fig. 1.8 — speech in, structure out</p>
             </div>
             <div class="work-body">
               <p class="work-desc">
@@ -259,7 +323,7 @@
                 <li class="stat"><span class="stat-value">SpLD</span><span class="stat-label mono">designed for, from day one</span></li>
               </ul>
               <ul class="work-tags mono" aria-label="Technologies"><li>Speech-to-text</li><li>Accessibility</li><li>Real-time</li></ul>
-              <a class="text-link mono work-link" href="https://github.com/Nabzx" target="_blank" rel="noopener">view on github ↗</a>
+              <a class="text-link mono work-link" href="https://github.com/Nabzx/EchoNotes" target="_blank" rel="noopener">view on github ↗</a>
             </div>
           </div>
         </div>
